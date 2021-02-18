@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %} Home {% endblock %}
+{% block content %}
+<h1>Welcome to the Tiny Feet GHG Database Reader</h1>
+<h2>This app can read all entries for each table in the database.</h2>
+<p>This app uses flask and sqlalchemy to connect to our MySQL database using read-only permissions, currently hosted on bluehost</p>
+<p>This site uses jinja for template inheritence and for passing python dictionaries of the table rows and columns <br>
+     queried from sqlalchemy Object Relational Mapping classes into the html template to be iterated over in a for loop and displayed in html tables</p>
+<p>The tables are all queried at the same time, but there is a javascript function that unhides the tables when selected from the drop-down menu</p>
+{% endblock %}

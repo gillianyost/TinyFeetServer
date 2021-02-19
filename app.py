@@ -94,8 +94,13 @@ def read():
         Zip_pop=Zip_pop
         )
 
-
+# Page Not Found
 @app.errorhandler(404)
+def err404(err):
+    return render_template('404.html', err=err)
+
+#Internal Server Error
+@app.errorhandler(500)
 def err404(err):
     return render_template('404.html', err=err)
 

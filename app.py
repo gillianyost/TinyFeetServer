@@ -12,7 +12,6 @@ db = SQLAlchemy(app)
 
 class cement_and_manufacturing(db.Model):
     zip = db.Column(db.Integer, primary_key=True)
-    assumedPopulation = db.Column(db.Integer)
     CO2e_MetricTonsPerYear = db.Column(db.Float)
 
 class electricity(db.Model):
@@ -50,9 +49,6 @@ class natural_gas(db.Model):
 
 class otis_transportation(db.Model):
     zip = db.Column(db.Integer, primary_key=True)
-    county = db.Column(db.Integer)
-    city = db.Column(db.Text)
-    population = db.Column(db.Integer)
     CO2e_total_passenger_vehicles_gasoline_mT_per_year = db.Column(db.Float)
     CO2e_total_passenger_vehicles_diesel_mT_per_year = db.Column(db.Float)
     CO2e_total_trucks_gasoline_mT_per_year = db.Column(db.Float)
@@ -60,7 +56,6 @@ class otis_transportation(db.Model):
 
 class waste(db.Model):
     zip = db.Column(db.Integer, primary_key=True)
-    assumed_population = db.Column(db.Integer)
     CO2e_MetricTonsPerYear = db.Column(db.Float)
 
 class zip_pop(db.Model):

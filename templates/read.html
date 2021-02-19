@@ -21,13 +21,11 @@
   <table class="styled-table">
       <tr>
         <th>zip</th>
-        <th>assumedPopulation</th>
         <th>CO2e_MetricTonsPerYear</th>
       </tr>
       {% for row in Cement_And_Manufacturing %}
       <tr>
         <td>{{row.zip}}</td>
-        <td>{{row.assumedPopulation}}</td>
         <td>{{row.CO2e_MetricTonsPerYear}}</td>
       </tr>
       {% endfor %}
@@ -121,9 +119,6 @@
   <table class="styled-table">
     <tr>
       <th>zip</th>
-      <th>county</th>
-      <th>city</th>
-      <th>population</th>
       <th>CO2e_total_passenger_vehicles_gasoline_mT_per_year</th>
       <th>CO2e_total_passenger_vehicles_diesel_mT_per_year</th>
       <th>CO2e_total_trucks_gasoline_mT_per_year</th>
@@ -132,9 +127,6 @@
     {% for row in OTIS_Transportation %}
     <tr>
       <td>{{row.zip}}</td>
-      <td>{{row.county}}</td>
-      <td>{{row.city}}</td>
-      <td>{{row.population}}</td>
       <td>{{row.CO2e_total_passenger_vehicles_gasoline_mT_per_year}}</td>
       <td>{{row.CO2e_total_passenger_vehicles_diesel_mT_per_year}}</td>
       <td>{{row.CO2e_total_trucks_gasoline_mT_per_year}}</td>
@@ -149,13 +141,11 @@
   <table class="styled-table">
     <tr>
       <th>zip</th>
-      <th>assumed_population</th>
       <th>CO2e_MetricTonsPerYear</th>
     </tr>
     {% for row in Waste %}
     <tr>
       <td>{{row.zip}}</td>
-      <td>{{row.assumed_population}}</td>
       <td>{{row.CO2e_MetricTonsPerYear}}</td>
     </tr>
     {% endfor %}

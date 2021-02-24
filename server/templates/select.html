@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block title %} Read {% endblock %}
+{% block content %}
+<form method="POST">
+    {{ form.csrf_token }}
+    {{ form.county }}
+    {{ form.city }}
+    {{ form.zip }}
+    {{ form.submit }}
+    <!-- <input type="hidden" id="getData"> -->
+</form>
+
+{% if zip_data %}
+<div class="centered">
+<table class="styled-table rotated">
+    <thead>
+        <th>zip</th>
+        <th>city</th>
+        <th>county</th>
+        <th>cement_and_manufacturing</th>
+        <th>waste</th>
+        <th>electricity_commercial</th>
+        <th>electricity_industrial</th>
+        <th>electricity_residential</th>
+        <th>naturalGas_commercial</th>
+        <th>naturalGas_industrial</th>
+        <th>naturalGas_residential</th>
+        <th>transportation_PV_gas</th>
+        <th>transportation_PV_diesel</th>
+        <th>transportation_trucks_gas</th>
+        <th>transportation_trucks_diesel</th>
+        <th>aviation</th>
+    </thead>
+    <tbody>
+        {% for row in zip_data%}
+        <tr>
+            <td>{{ row.zip }}</td>
+            <td>{{ row.city }}</td>
+            <td>{{ row.county }}</td>
+            <td>{{ row.cement_and_manufacturing }}</td>
+            <td>{{ row.waste }}</td>
+            <td>{{ row.electricity_commercial }}</td>
+            <td>{{ row.electricity_industrial }}</td>
+            <td>{{ row.electricity_residential }}</td>
+            <td>{{ row.naturalGas_commercial }}</td>
+            <td>{{ row.naturalGas_industrial }}</td>
+            <td>{{ row.naturalGas_residential }}</td>
+            <td>{{ row.transportation_PV_gas }}</td>
+            <td>{{ row.transportation_PV_diesel }}</td>
+            <td>{{ row.transportation_trucks_gas }}</td>
+            <td>{{ row.transportation_trucks_diesel }}</td>
+            <td>{{ row.aviation }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</div>
+{% endif %}
+{% endblock %}

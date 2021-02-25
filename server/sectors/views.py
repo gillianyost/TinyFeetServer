@@ -37,8 +37,8 @@ def select():
         # Change back dropdown options after they reset on page reload
         city = form.county.data
         zip = form.city.data
-        form.city.choices = [(row.city) for row in db.session.query(zip_pop.city).filter_by(county=form.county.data).distinct(zip_pop.county).order_by(zip_pop.city)]
-        form.zip.choices = [(row.zip) for row in db.session.query(zip_pop.zip).filter_by(city=form.city.data).all()]
+        form.city.choices = [(row.city, row.city) for row in db.session.query(zip_pop.city).filter_by(county=form.county.data).distinct(zip_pop.county).order_by(zip_pop.city)]
+        form.zip.choices = [(row.zip, row.zip) for row in db.session.query(zip_pop.zip).filter_by(city=form.city.data).all()]
 
         # Query model
         zip_data = Zip_data.query.filter_by(zip=form.zip.data)

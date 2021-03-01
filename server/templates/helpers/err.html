@@ -1,0 +1,8 @@
+{% extends "helpers/base.html" %}
+{% block title %} Home {% endblock %}
+{% block content %}
+<h1>Oops! We encountered an error</h1>
+{% if err %}
+    {{err}}
+{% endif %}
+{% endblock %}

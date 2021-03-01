@@ -1,0 +1,79 @@
+<!-- navbar is included in base.html.  Dependencies are bootstrap and jquery -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <!-- Brand Link -->
+    <a class="navbar-brand" href="/">
+    <img src="{{ url_for('static', filename='img/logoTransparant.png') }}" style="width:42px;height:42px;">
+    TINY FEET
+    </a>
+
+  <!-- THIS SETS UP THE COLLAPSABLE BUTTON ELEMENT (HAMBURGER) -->
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <!-- THEN WE PUT AN UNORDERED LIST INSIDE OF A COLLAPSE DIV -->
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <!-- EVERY ITEM IN NAVBAR IS JUST A LIST ITEM -->
+      <li class="nav-item active">
+        <a class="nav-link" href="/emissions">Emissions</a>
+      </li>
+      <!-- HERE IS ANOTHER ONE, BUT THE LINK DOESNT "LOOK" ACTIVE -->
+      <li class="nav-item">
+        <a class="nav-link" href="/recommendations">Recommendations</a>
+      </li>
+      <!-- HERE IS ANOTHER ONE, BUT THE LINK DOESNT "LOOK" ACTIVE -->
+      <li class="nav-item">
+        <a class="nav-link" href="/news">News</a>
+      </li>
+
+      <!-- WE CAN ALSO CREATE DROPDOWN MENUS -->
+      <li class="nav-item dropdown">
+        <!-- TOP LEVEL DROPDOWN -->
+        <a
+          class="nav-link dropdown-toggle"
+          href="#"
+          id="navbarDropdown"
+          role="button"
+          data-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false"
+        >
+          Sectors
+        </a>
+
+        <!-- ONE DIVISION IN THE DROPDOWN -->
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="/sectors/read">Read Tables</a>
+          <!-- ANOTHER DIVISION IN THE DROPDOWN -->
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="/sectors/select">Select Zip</a>
+        </div>
+      </li>
+    </ul>
+
+    <!-- CAN EVEN ADD A SEARCH FORM -->
+    <form action="{{ url_for('sectors.search') }}" method="POST" class="form-inline my-2 my-lg-0">
+      <input
+        class="form-control mr-sm-2"
+        type="number"
+        min="80001"
+        max="81658"
+        placeholder="Zip"
+        aria-label="Search"
+        name="zipInput"
+      />
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+        Get Data
+      </button>
+    </form>
+  </div>
+</nav>

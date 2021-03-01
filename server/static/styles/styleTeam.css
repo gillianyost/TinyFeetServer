@@ -1,0 +1,46 @@
+/* These style selectors need more detail because they interfere with other css rules */
+
+#center {text-align: center;}
+
+/*---Main Header and Footer----------*/
+#main-header{
+      text-align:center;
+      background-color:palegreen;
+      color:white;
+      padding:10px;
+}
+#main-footer{
+      text-align:center;
+      font-size:18px;
+}
+
+/*------------------Download Button--------------------*/
+.btn {
+  background-color: DodgerBlue;
+  border: none;
+  color: white;
+  padding: 12px 30px;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+/* Darker background on mouse-over */
+.btn:hover {
+  background-color: RoyalBlue;
+}
+/*--------------Setup for Rows---------------------*/
+.row {
+    display: flex;
+  }
+  
+  .column {
+    flex: 50%;
+  }
+
+/*------------Secondary Header Format----------------*/
+h2 {
+    font-weight: normal;
+    font-size: 18px;
+}
+
+

@@ -1,1 +1,3 @@
 /.vscode
+/server/registration
+/server/templates/helpers/register.html

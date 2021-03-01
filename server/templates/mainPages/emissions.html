@@ -1,0 +1,46 @@
+{% extends "helpers/base.html" %}
+{% block title %} Emissions {% endblock %}
+{% block content %}
+<h3>Emissions Estimation</h3>
+  <p>Emissions Estimation will display a heat map of Colorado by zip code with the data from out database. It will then take in the user region ID and display emissions totals and holistic metrics. It will also have an option to download the data from our database?</p> 
+
+  <iframe src="http://tinyfeettoolkit.com/map/" style="height:75vw;width:100%;" title="Iframe Example"></iframe>
+  <br>
+  <br>
+  <br>
+  
+  <!-- User Region Input -->
+  <form action="" method="POST">
+      <div>
+        <label>Zip Code/City/County</label>
+        <input type="number" name="region_ID" placeholder="Enter Location">
+        <input type="submit" name="submit_location" value="Submit">
+      </div>
+      <br>
+    </form>
+<!--Output-->
+<br>
+<p>Total Region Emissions:</p>
+<br>
+
+<!--PIE CHART start-->
+<!--Pull Sector Totals for zipcode and use here-->
+<body>
+
+  <p>Region Emissions by Sector:</p>
+  
+  <div id="piechart"></div>
+  
+  </body>
+<!--PIE CHART end-->
+
+<br>
+<p>Region Holistic Community Metrics:</p>
+<br>
+  <!--Download Button-->
+  <button class="btn"><i class="fa fa-download"></i> Download All Data</button>
+</div>
+
+
+  {% endblock %}
+

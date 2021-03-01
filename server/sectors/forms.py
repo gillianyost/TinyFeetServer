@@ -3,7 +3,8 @@ from wtforms import SelectField, SubmitField
 
 
 class CityCountyZipDropDown(FlaskForm):
-    county = SelectField('county', choices=[])
-    city = SelectField('city', choices=[])
-    zip = SelectField('zip', choices=[])
+    county = SelectField('County', choices=[])
+    city = SelectField('City', choices=[])
+    zip = SelectField('Zip', choices=[])
     submit = SubmitField('Get Data')
+

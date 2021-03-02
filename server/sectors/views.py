@@ -91,6 +91,7 @@ def chart(zip):
         zipData = {'sector':'Emissions'}
         zipData.update(data)
         
+        print(zipData)
 
         # Change back dropdown options after they reset on page reload
         form.county.choices = [(row.county) for row in db.session.query(zip_pop.county).distinct(zip_pop.county).order_by(zip_pop.county)]

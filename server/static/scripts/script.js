@@ -20,13 +20,13 @@ function submitForm(form) {
     submitFormFunction.call(form);
 }
 
-county_select.onchange = function(){changeCity();}
-city_select.onchange = function(){changeZip();}
+county_select.onchange = function(){changeCity()}
+city_select.onchange = function(){changeZip()}
 
 
 function changeCity() {
     county = county_select.value;
-    fetch('/sectors/county/' + county).then(function(response){
+    fetch('/sectors/' + county).then(function(response){
         response.json().then(function(data){
             // console.table(data);
             let optionHTML = '';
@@ -43,7 +43,7 @@ function changeCity() {
 function changeZip() {
     county = county_select.value;
     city = city_select.value;
-    fetch(`/sectors/county/${county}/city/${city}`).then(function(response){
+    fetch(`/sectors/${county}/${city}`).then(function(response){
         response.json().then(function(data){
             // console.table(data);
             let optionHTML = '';
@@ -55,3 +55,18 @@ function changeZip() {
         });
     });
 }
+
+/* ------------------ Re-draw Google Chart on window resize ----------------- */
+
+//create trigger to resizeEnd event     
+$(window).resize(function() {
+    if(this.resizeTO) clearTimeout(this.resizeTO);
+    this.resizeTO = setTimeout(function() {
+        $(this).trigger('resizeEnd');
+    }, 500);
+});
+
+//redraw graph when window resize is completed  
+$(window).on('resizeEnd', function() {
+    drawChart(data);
+});

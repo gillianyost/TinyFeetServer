@@ -61,7 +61,7 @@
     </ul>
 
     <!-- CAN EVEN ADD A SEARCH FORM -->
-    <form action="{{ url_for('sectors.search') }}" method="POST" class="form-inline my-2 my-lg-0">
+    <form action="{{ url_for('sectors.select') }}" method="POST" class="form-inline my-2 my-lg-0">
       <input
         class="form-control mr-sm-2"
         type="number"
@@ -70,6 +70,7 @@
         placeholder="Zip"
         aria-label="Search"
         name="zipInput"
+        required
       />
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
         Get Data

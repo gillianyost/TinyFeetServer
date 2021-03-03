@@ -89,3 +89,9 @@ class Zip_data(db.Model):
     transportation_trucks_gas = db.Column(db.Integer)
     transportation_trucks_diesel = db.Column(db.Integer)
     aviation = db.Column(db.Integer)
+
+# --------- Table object allows for querying of tables by a variable --------- #
+
+tables_dict = {table.__tablename__: table for table in db.Model.__subclasses__()}
+def table_object(table_name):
+    return tables_dict.get(table_name)

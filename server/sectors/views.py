@@ -1,7 +1,7 @@
 from flask import Blueprint,render_template,redirect,url_for,request, jsonify, flash
 from server import db
-from server.sectors.forms import CityCountyZipDropDown
-from server.models import cement_and_manufacturing, electricity, natural_gas, otis_transportation, waste, aviation, zip_pop, Zip_data
+from server.sectors.forms import CityCountyZipDropDown, tableSelectForm
+from server.models import cement_and_manufacturing, electricity, natural_gas, otis_transportation, waste, aviation, zip_pop, Zip_data, table_object
 from sqlalchemy import distinct, inspect
 import collections, functools, operator 
 
@@ -18,26 +18,57 @@ def object_as_dict(obj):
     return {c.key: coalesce(getattr(obj, c.key))
         for c in inspect(obj).mapper.column_attrs}
 
+
 # ------------------------------ Read page route ----------------------------- #
 
-@sectors_blueprint.route('/read')
+@sectors_blueprint.route('/read', methods=['GET', 'POST'])
 def read():
-    Cement_And_Manufacturing = cement_and_manufacturing.query.all()
-    Electricity = electricity.query.all()
-    Natural_gas = natural_gas.query.all()
-    OTIS_Transportation = otis_transportation.query.all()
-    Waste = waste.query.all()
-    Aviation = aviation.query.all()
-    Zip_pop = zip_pop.query.all()
-    return render_template('/mainPages/read.html', 
-        Cement_And_Manufacturing=Cement_And_Manufacturing, 
-        Electricity=Electricity,
-        Natural_gas=Natural_gas,
-        OTIS_Transportation=OTIS_Transportation,
-        Waste=Waste,
-        Aviation=Aviation,
-        Zip_pop=Zip_pop
-        )
+    form = tableSelectForm()
+
+    if request.method == 'POST':
+        print(form.tables.data)
+        if form.tables.data == "Select A Table To Read" or form.tables.data == None:
+            flash("Please Select A Table To Read")
+        else:
+            tableName = form.tables.data
+            return redirect(f'/sectors/read/{tableName}')
+
+    form.tables.data = "Select A Table to Read"
+    return render_template('/mainPages/read.html', form=form)
+
+
+@sectors_blueprint.route('/read/<tableName>')
+def readTable(tableName):
+    if tableName == "waste":
+        columnNames = waste.__table__.columns.keys()
+        query = waste.query.all()
+    elif tableName == "cement_and_manufacturing":
+        columnNames = cement_and_manufacturing.__table__.columns.keys()
+        query = cement_and_manufacturing.query.all()
+    elif tableName == "electricity":
+        columnNames = electricity.__table__.columns.keys()
+        query = electricity.query.all()
+    elif tableName == "natural_gas":
+        columnNames = natural_gas.__table__.columns.keys()
+        query = natural_gas.query.all()
+    elif tableName == "zip_pop":
+        columnNames = zip_pop.__table__.columns.keys()
+        query = zip_pop.query.all()
+    elif tableName == "aviation":
+        columnNames = aviation.__table__.columns.keys()
+        query = aviation.query.all()
+    else:
+        flash("Table Name Not Recognized")
+        return redirect(url_for('sectors.read'))
+
+    tableData = []
+    for row in query:
+        d = object_as_dict(row)
+        tableData.append(d.values())
+
+    form = tableSelectForm()
+    form.tables.data = tableName
+    return render_template('/mainPages/read.html', form=form, tableName=tableName, columnNames=columnNames, tableData=tableData)
 
 
 # ------- Select page GET route and POST form handling to load table chart ------- #

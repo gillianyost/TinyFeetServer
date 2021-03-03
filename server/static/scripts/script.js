@@ -1,28 +1,28 @@
 /* --------------------- Read page form hiding/unhiding --------------------- */
-function changeOptions(selectEl) {
-    let selectedValue = selectEl.options[selectEl.selectedIndex].value;
-    let subForms = document.getElementsByClassName('schema');
-    for (let i = 0; i < subForms.length; i += 1) {
-      if (selectedValue === subForms[i].id)
-        subForms[i].setAttribute('style', 'display:block');
-      else
-        subForms[i].setAttribute('style', 'display:none');
-    }
-  }
+// function changeOptions(selectEl) {
+//     let selectedValue = selectEl.options[selectEl.selectedIndex].value;
+//     let subForms = document.getElementsByClassName('schema');
+//     for (let i = 0; i < subForms.length; i += 1) {
+//       if (selectedValue === subForms[i].id)
+//         subForms[i].setAttribute('style', 'display:block');
+//       else
+//         subForms[i].setAttribute('style', 'display:none');
+//     }
+//   }
 
 /* ------------- Dynamic Select page dropdown options switching ------------- */
-let county_select = document.getElementById('county');
-let city_select = document.getElementById('city');
-let zip_select = document.getElementById('zip');
+
 
 function submitForm(form) {
     const submitFormFunction = Object.getPrototypeOf(form).submit;
     submitFormFunction.call(form);
 }
 
+let county_select = document.getElementById('county');
+let city_select = document.getElementById('city');
+let zip_select = document.getElementById('zip');
 county_select.onchange = function(){changeCity()}
 city_select.onchange = function(){changeZip()}
-
 
 function changeCity() {
     county = county_select.value;

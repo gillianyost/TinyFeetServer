@@ -1,13 +1,12 @@
 from flask import Blueprint,render_template,redirect,url_for,request, jsonify, flash
 from server import db
 from server.sectors.forms import CityCountyZipDropDown, tableSelectForm
-from server.models import cement_and_manufacturing, electricity, natural_gas, otis_transportation, waste, aviation, zip_pop, Zip_data, table_object
+from server.models import cement_and_manufacturing, electricity, natural_gas, otis_transportation, waste, aviation, zip_pop, Zip_data
 from sqlalchemy import distinct, inspect
+import collections
 # import flask_excel as excel
 
-
 sectors_blueprint = Blueprint('sectors', __name__, template_folder='../templates')
-
 
 # ----------------------------- Helper Functions ----------------------------- #
 

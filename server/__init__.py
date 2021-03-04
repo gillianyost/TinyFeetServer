@@ -17,8 +17,9 @@ db = SQLAlchemy(app)
 from server.sectors.views import sectors_blueprint
 app.register_blueprint(sectors_blueprint,url_prefix="/sectors")
 
-from server.sectors.export import export_blueprint
-app.register_blueprint(export_blueprint,url_prefix="/sectors")
+from server.survey.views import survey_blueprint
+app.register_blueprint(survey_blueprint,url_prefix="/survey")
+
 
 # from server.registration.views import registration_blueprint
 # app.register_blueprint(registration_blueprint,url_prefix="/registration")

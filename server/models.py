@@ -92,6 +92,6 @@ class Zip_data(db.Model):
 
 # --------- Table object allows for querying of tables by a variable --------- #
 
-tables_dict = {table.__tablename__: table for table in db.Model.__subclasses__()}
-def table_object(table_name):
-    return tables_dict.get(table_name)
+# tables_dict = {table.__tablename__: table for table in db.Model.__subclasses__()}
+# def table_object(table_name):
+#     return tables_dict.get(table_name)

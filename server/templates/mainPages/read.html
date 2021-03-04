@@ -20,6 +20,16 @@
   {% from 'helpers/_formHelpers.html' import render_field %}
   {{ render_field(form.tables, onchange="submitForm(readForm)") }}
 </form>
+  {% if tableData %}
+  <!-- <form method="POST">
+    {{ form.download }}
+  </form> -->
+  <form action="../../static/data/{{ tableName | safe }}.xls">
+    <button type="submit">Download!</button>
+ </form>
+  {% endif %}
+
+
 
 {% if tableData %}
 <div class="container">

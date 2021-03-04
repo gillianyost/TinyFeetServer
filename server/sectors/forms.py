@@ -11,7 +11,7 @@ class CityCountyZipDropDown(FlaskForm):
     zipSubmit = SubmitField('Get Data By Zip')
 
 class tableSelectForm(FlaskForm):
-    submit = SubmitField('Get Table Data')
+    download = SubmitField('Download Table Data')
     tables = SelectField('', choices=[ "Select A Table To Read",
                                         'cement_and_manufacturing',
                                         'waste',

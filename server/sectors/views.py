@@ -3,7 +3,8 @@ from server import db
 from server.sectors.forms import CityCountyZipDropDown, tableSelectForm
 from server.models import cement_and_manufacturing, electricity, natural_gas, otis_transportation, waste, aviation, zip_pop, Zip_data, table_object
 from sqlalchemy import distinct, inspect
-import collections, functools, operator 
+# import flask_excel as excel
+
 
 sectors_blueprint = Blueprint('sectors', __name__, template_folder='../templates')
 
@@ -26,9 +27,12 @@ def read():
     form = tableSelectForm()
 
     if request.method == 'POST':
-        print(form.tables.data)
-        if form.tables.data == "Select A Table To Read" or form.tables.data == None:
+        tableName = form.tables.data
+        if tableName == "Select A Table To Read":
             flash("Please Select A Table To Read")
+        # Redirect with POST
+        # elif form.download.data:
+        #     return redirect(f'read/{tableName}', code=307)
         else:
             tableName = form.tables.data
             return redirect(f'/sectors/read/{tableName}')
@@ -37,8 +41,10 @@ def read():
     return render_template('/mainPages/read.html', form=form)
 
 
-@sectors_blueprint.route('/read/<tableName>')
+@sectors_blueprint.route('/read/<tableName>', methods=['GET', 'POST'])
 def readTable(tableName):
+    form = tableSelectForm()
+
     if tableName == "waste":
         columnNames = waste.__table__.columns.keys()
         query = waste.query.all()
@@ -66,7 +72,14 @@ def readTable(tableName):
         d = object_as_dict(row)
         tableData.append(d.values())
 
-    form = tableSelectForm()
+    # Convert data to excel and download
+    # if request.method == 'POST':
+    #     tableData.insert(0, columnNames)
+    #     print(tableData)
+    #     # return excel.make_response_from_array([[1, 2], [3, 4]], "csv", file_name="export_data")
+    #     # return excel.make_response_from_array(tableData, "csv", file_name=f"{tableName}")
+
+
     form.tables.data = tableName
     return render_template('/mainPages/read.html', form=form, tableName=tableName, columnNames=columnNames, tableData=tableData)
 

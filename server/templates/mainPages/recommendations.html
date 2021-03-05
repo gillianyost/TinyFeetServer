@@ -49,11 +49,9 @@
   <!--TODO Display Recommendations Based on Filters and Emissions/Metrics Data-->
   <p>User input along with data for user region will be filtered through an algorithm, 
     or a "list of steps", to decide the top recommended action for the user</p>
-  <h3>Algorithm score: {{ count }}</h3>
-
   
   {% if tableData %}
-  <h2>Recommendations</h2>
+  <h3>Recommendations</h3>
   <table class="styled-table">
       <tr>
         {% for column in columnNames %}

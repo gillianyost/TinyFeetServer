@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+{% block title %} Emissions {% endblock %}
+{% block content %}
+<h3>Emissions Estimation</h3>
+  <p>Emissions Estimation will display a heat map of Colorado by zip code with the data from out database. It will then take in the user region ID and display emissions totals and holistic metrics. It will also have an option to download the data from our database?</p> 
+
+  <iframe src="http://tinyfeettoolkit.com/map/" style="height:45vw;width:100%;" title="Iframe Example"></iframe>
+  <br>
+  <br>
+  <br>
+  
+  <!-- User Region Input -->
+  <form action="Gillian-test-3.php" method="post">
+      <div>
+        <label>Zip Code/City/County</label>
+        <input type="number" name="region_ID" placeholder="Enter Location">
+        <input type="submit" name="submit_location" value="Submit">
+      </div>
+      <br>
+    </form>
+    <form action="Gillian-test-3.php" method="post">
+    </form>
+<!--Output-->
+<br>
+<p>Total Region Emissions:</p>
+<br>
+
+<!--PIE CHART start-->
+<!--Pull Sector Totals for zipcode and use here-->
+<body>
+
+  <p>Region Emissions by Sector:</p>
+  
+  <div id="piechart"></div>
+  
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  
+  <script type="text/javascript">
+  // Load google charts
+  google.charts.load('current', {'packages':['corechart']});
+  google.charts.setOnLoadCallback(drawChart);
+  
+  // Draw the chart and set the chart values
+  function drawChart() {
+    var data = google.visualization.arrayToDataTable([
+    ['Sector', 'CO2e Emissions'],
+    ['Cement and Manufacturing', 8],
+    ['Waste', 2],
+    ['Energy - Electricity', 4],
+    ['Energy - Natural Gas', 2],
+    ['Transportation', 8]
+  ]);
+  
+    // Optional; add a title and set the width and height of the chart
+    var options = {'title':'Region Emissions by Sector', 'width':550, 'height':400};
+
+    var options = {backgroundColor: '#e6ffe6',
+                       'width':400,
+                       'height':300};
+  
+    // Display the chart inside the <div> element with id="piechart"
+    var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+    chart.draw(data, options);
+  }
+  </script>
+  
+  </body>
+<!--PIE CHART end-->
+
+<br>
+<p>Region Holistic Community Metrics:</p>
+<br>
+  <!--Download Button-->
+  <button class="btn"><i class="fa fa-download"></i> Download All Data</button>
+</div>
+
+
+  {% endblock %}
+

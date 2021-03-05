@@ -18,24 +18,31 @@
   </div>
   <form action="/recommendations" method="POST">
   <div class="row">
+    <div class="col-sm-5 col-md-6">{{ form.allSol.label }}{{ form.allSol }}</div>
+    <div class="col-sm-5 offset-sm-2 col-md-6 offset-md-0">{{ form.allSec.label }}{{ form.allSec }}</div>
+  </div>
+  <div class="row">
     <div class="col-sm-5 col-md-6">{{ form.equity.label }}{{ form.equity }}</div>
     <div class="col-sm-5 offset-sm-2 col-md-6 offset-md-0">{{ form.cementMan.label }}{{ form.cementMan }}</div>
   </div>
   <div class="row">
-    <div class="col-sm-5 col-md-6">{{ form.envQuality.label }}{{ form.envQuality }}</div>
-    <div class="col-sm-5 offset-sm-2 col-md-6 offset-md-0">{{ form.envQuality.label }}{{ form.envQuality }}</div>
+    <div class="col-sm-5 col-md-6">{{ form.econSus.label }}{{ form.econSus }}</div>
+    <div class="col-sm-5 offset-sm-2 col-md-6 offset-md-0">{{ form.waste.label }}{{ form.waste }}</div>
   </div>
   <div class="row">
-    <div class="col-sm-5 col-md-6">{{ form.healthSafety.label }}{{ form.healthSafety }}</div>
+    <div class="col-sm-5 col-md-6">{{ form.envQuality.label }}{{ form.envQuality }}</div>
     <div class="col-sm-5 offset-sm-2 col-md-6 offset-md-0">{{ form.electricity.label }}{{ form.electricity }}</div>
   </div>
   <div class="row">
-    <div class="col-sm-5 col-md-6">{{ form.resilience.label }}{{ form.resilience }}</div>
+    <div class="col-sm-5 col-md-6">{{ form.healthSafety.label }}{{ form.healthSafety }}</div>
     <div class="col-sm-5 offset-sm-2 col-md-6 offset-md-0">{{ form.naturalGas.label }}{{ form.naturalGas }}</div>
   </div>
   <div class="row">
-    <div class="col-sm-5 col-md-6">{{ form.submit }}</div>
+    <div class="col-sm-5 col-md-6">{{ form.resilience.label }}{{ form.resilience }}</div>
     <div class="col-sm-5 offset-sm-2 col-md-6 offset-md-0">{{ form.transportation.label }}{{ form.transportation }}</div>
+  </div>
+  <div class="row">
+    <div class="col-sm-5 col-md-6">{{ form.submit }}</div>
   </div>
   </form>
   <h1>List of Solutions Selected for your Community</h1>
@@ -43,6 +50,26 @@
   <p>User input along with data for user region will be filtered through an algorithm, 
     or a "list of steps", to decide the top recommended action for the user</p>
   <h3>Algorithm score: {{ count }}</h3>
+
+  
+  {% if tableData %}
+  <h2>Recommendations</h2>
+  <table class="styled-table">
+      <tr>
+        {% for column in columnNames %}
+        <th>{{ column }}</th>
+        {% endfor %}
+      </tr>
+      {% for row in tableData %}
+        <tr>
+          {% for column in row %}
+            <td>{{ column }}</td>
+          {% endfor %}
+        </tr>
+      {% endfor %}
+    </table>
+{% endif %}
+
 </div>
 
 {% endblock %}

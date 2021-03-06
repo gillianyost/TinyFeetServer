@@ -2,7 +2,7 @@ from server import app
 from flask import render_template, request
 from server import db
 from server.survey.forms import RecForm
-from server.models import solutions
+from server.models import Solutions
 from sqlalchemy import distinct, inspect
 from server.sectors.views import object_as_dict
 import collections
@@ -27,30 +27,30 @@ def recommendations():
     if request.method == 'POST':
        
         if form.allSol.data:
-            # query = solutions.query(solutions.solution_description, \
-            # solutions.section, \
-            # solutions.subsection, \
-            # solutions.ghg_reduction_potential) # Cannot get to work TO DO
+            # query = Solutions.query(Solutions.solution_description, \
+            # Solutions.section, \
+            # Solutions.subsection, \
+            # Solutions.ghg_reduction_potential) # Cannot get to work TO DO
 
-            # columnNames = solutions.__tablename__.columns.keys()  # Cannot get to work TO DO
-            query = solutions.query.all()
+            # columnNames = Solutions.__tablename__.columns.keys()  # Cannot get to work TO DO
+            query = Solutions.query.all()
         else: 
-            # query = solutions.query(solutions.solution_description, \
-            # solutions.section, \
-            # solutions.subsection, \
-            # solutions.ghg_reduction_potential)\
-            # .filter((solutions.equity & form.equity.data) | \
-            # (solutions.economic_sustainability & form.econSus.data) | \
-            # (solutions.local_environmental_quality & form.envQuality.data) | \
-            # (solutions.enhances_public_safety & form.healthSafety.data) | \
-            # (solutions.builds_resilience & form.resilience.data)) # Cannot get to work TO DO
+            # query = Solutions.query(Solutions.solution_description, \
+            # Solutions.section, \
+            # Solutions.subsection, \
+            # Solutions.ghg_reduction_potential)\
+            # .filter((Solutions.equity & form.equity.data) | \
+            # (Solutions.economic_sustainability & form.econSus.data) | \
+            # (Solutions.local_environmental_quality & form.envQuality.data) | \
+            # (Solutions.enhances_public_safety & form.healthSafety.data) | \
+            # (Solutions.builds_resilience & form.resilience.data)) # Cannot get to work TO DO
 
-            # columnNames = solutions.__tablename__.columns.keys()  # Cannot get to work TO DO
-            query = solutions.query.filter((solutions.equity & form.equity.data) | \
-            (solutions.economic_sustainability & form.econSus.data) | \
-            (solutions.local_environmental_quality & form.envQuality.data) | \
-            (solutions.enhances_public_safety & form.healthSafety.data) | \
-            (solutions.builds_resilience & form.resilience.data))
+            # columnNames = Solutions.__tablename__.columns.keys()  # Cannot get to work TO DO
+            query = Solutions.query.filter((Solutions.equity & form.equity.data) | \
+            (Solutions.economic_sustainability & form.econSus.data) | \
+            (Solutions.local_environmental_quality & form.envQuality.data) | \
+            (Solutions.enhances_public_safety & form.healthSafety.data) | \
+            (Solutions.builds_resilience & form.resilience.data))
 
         for row in query:
             d = object_as_dict(row)

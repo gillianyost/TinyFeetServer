@@ -1,7 +1,7 @@
 from flask import Blueprint,render_template,redirect,url_for,request, jsonify, flash
 from server import db
 from server.sectors.forms import CityCountyZipDropDown, tableSelectForm
-from server.models import cement_and_manufacturing, electricity, natural_gas, otis_transportation, waste, aviation, zip_pop, Zip_data
+from server.models import Cement_and_manufacturing, Electricity, Natural_gas, Otis_transportation, Waste, Aviation, Zip_pop, Zip_data
 from sqlalchemy import distinct, inspect
 import collections
 # import flask_excel as excel
@@ -45,23 +45,23 @@ def readTable(tableName):
     form = tableSelectForm()
 
     if tableName == "waste":
-        columnNames = waste.__table__.columns.keys()
-        query = waste.query.all()
+        columnNames = Waste.__table__.columns.keys()
+        query = Waste.query.all()
     elif tableName == "cement_and_manufacturing":
-        columnNames = cement_and_manufacturing.__table__.columns.keys()
-        query = cement_and_manufacturing.query.all()
+        columnNames = Cement_and_manufacturing.__table__.columns.keys()
+        query = Cement_and_manufacturing.query.all()
     elif tableName == "electricity":
-        columnNames = electricity.__table__.columns.keys()
-        query = electricity.query.all()
+        columnNames = Electricity.__table__.columns.keys()
+        query = Electricity.query.all()
     elif tableName == "natural_gas":
-        columnNames = natural_gas.__table__.columns.keys()
-        query = natural_gas.query.all()
+        columnNames = Natural_gas.__table__.columns.keys()
+        query = Natural_gas.query.all()
     elif tableName == "zip_pop":
-        columnNames = zip_pop.__table__.columns.keys()
-        query = zip_pop.query.all()
+        columnNames = Zip_pop.__table__.columns.keys()
+        query = Zip_pop.query.all()
     elif tableName == "aviation":
-        columnNames = aviation.__table__.columns.keys()
-        query = aviation.query.all()
+        columnNames = Aviation.__table__.columns.keys()
+        query = Aviation.query.all()
     else:
         flash("Table Name Not Recognized")
         return redirect(url_for('sectors.read'))
@@ -117,9 +117,9 @@ def select():
         return redirect(f'/sectors/select')
     
     if request.method == 'GET':
-        form.county.choices = ["Select Option"] + [(row.county) for row in db.session.query(zip_pop.county).distinct(zip_pop.county).order_by(zip_pop.county)]
-        form.city.choices = ["Select Option"] + [(row.city) for row in db.session.query(zip_pop.city).distinct(zip_pop.city).order_by(zip_pop.city)]
-        form.zip.choices = ["Select Option"] + [(row.zip) for row in db.session.query(zip_pop.zip).distinct(zip_pop.zip).order_by(zip_pop.zip)]
+        form.county.choices = ["Select Option"] + [(row.county) for row in db.session.query(Zip_pop.county).distinct(Zip_pop.county).order_by(Zip_pop.county)]
+        form.city.choices = ["Select Option"] + [(row.city) for row in db.session.query(Zip_pop.city).distinct(Zip_pop.city).order_by(Zip_pop.city)]
+        form.zip.choices = ["Select Option"] + [(row.zip) for row in db.session.query(Zip_pop.zip).distinct(Zip_pop.zip).order_by(Zip_pop.zip)]
 
     return render_template('mainPages/select.html', form=form)
 
@@ -144,9 +144,9 @@ def chartZip(zip):
     zipData = list(map(list, data.items()))
     zipData.insert(0, ['Sector', 'Emissions'])
 
-    form.county.choices = [(row.county) for row in db.session.query(zip_pop.county).distinct(zip_pop.county).order_by(zip_pop.county)]
-    form.city.choices = [(row.city) for row in db.session.query(zip_pop.city).filter_by(county=county).distinct(zip_pop.county).order_by(zip_pop.city)]
-    form.zip.choices = [(row.zip) for row in db.session.query(zip_pop.zip).filter_by(city=city).all()]
+    form.county.choices = [(row.county) for row in db.session.query(Zip_pop.county).distinct(Zip_pop.county).order_by(Zip_pop.county)]
+    form.city.choices = [(row.city) for row in db.session.query(Zip_pop.city).filter_by(county=county).distinct(Zip_pop.county).order_by(Zip_pop.city)]
+    form.zip.choices = [(row.zip) for row in db.session.query(Zip_pop.zip).filter_by(city=city).all()]
     form.zip.data = zip
     form.city.data = city
     form.county.data = county
@@ -186,9 +186,9 @@ def chartCity(city):
         zipData = list(map(list, data.items()))
         zipData.insert(0, ['Sector', 'Emissions'])
 
-        form.county.choices = [(row.county) for row in db.session.query(zip_pop.county).distinct(zip_pop.county).order_by(zip_pop.county)]
-        form.city.choices = [(row.city) for row in db.session.query(zip_pop.city).filter_by(county=county).distinct(zip_pop.county).order_by(zip_pop.city)]
-        form.zip.choices = ["Select Option"] + [(row.zip) for row in db.session.query(zip_pop.zip).filter_by(city=city).all()]
+        form.county.choices = [(row.county) for row in db.session.query(Zip_pop.county).distinct(Zip_pop.county).order_by(Zip_pop.county)]
+        form.city.choices = [(row.city) for row in db.session.query(Zip_pop.city).filter_by(county=county).distinct(Zip_pop.county).order_by(Zip_pop.city)]
+        form.zip.choices = ["Select Option"] + [(row.zip) for row in db.session.query(Zip_pop.zip).filter_by(city=city).all()]
         form.zip.data = ["Select Option"]
         form.city.data = city
         form.county.data = county
@@ -228,9 +228,9 @@ def chartCounty(county):
         zipData = list(map(list, data.items()))
         zipData.insert(0, ['Sector', 'Emissions'])
 
-        form.county.choices = [(row.county) for row in db.session.query(zip_pop.county).distinct(zip_pop.county).order_by(zip_pop.county)]
-        form.city.choices = ["Select Option"] + [(row.city) for row in db.session.query(zip_pop.city).filter_by(county=county).distinct(zip_pop.county).order_by(zip_pop.city)]
-        form.zip.choices = ["Select Option"] + [(row.zip) for row in db.session.query(zip_pop.zip).filter_by(city=city).all()]
+        form.county.choices = [(row.county) for row in db.session.query(Zip_pop.county).distinct(Zip_pop.county).order_by(Zip_pop.county)]
+        form.city.choices = ["Select Option"] + [(row.city) for row in db.session.query(Zip_pop.city).filter_by(county=county).distinct(Zip_pop.county).order_by(Zip_pop.city)]
+        form.zip.choices = ["Select Option"] + [(row.zip) for row in db.session.query(Zip_pop.zip).filter_by(city=city).all()]
         form.zip.data = ["Select Option"]
         form.city.data = ["Select Option"]
         form.county.data = county
@@ -242,7 +242,7 @@ def chartCounty(county):
 
 @sectors_blueprint.route('/<county>')
 def city(county):
-    rows = db.session.query(zip_pop.city).filter_by(county=county).distinct(zip_pop.county).order_by(zip_pop.city)
+    rows = db.session.query(Zip_pop.city).filter_by(county=county).distinct(Zip_pop.county).order_by(Zip_pop.city)
     cityArray = []
     for row in rows:
         cityObj = {}
@@ -253,7 +253,7 @@ def city(county):
 
 @sectors_blueprint.route('/<county>/<city>')
 def zip(county, city):
-    rows = db.session.query(zip_pop.zip).filter_by(city=city).all()
+    rows = db.session.query(Zip_pop.zip).filter_by(city=city).all()
     zipArray = []
     for row in rows:
         zipObj = {}

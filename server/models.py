@@ -1,14 +1,13 @@
 from server import db
 
 # --------------------------------- Sector Tables ORM -------------------------------- #
-# For some reason, function names need to be lower case?? Otherwise we get an error
 
-class cement_and_manufacturing(db.Model):
+class Cement_and_manufacturing(db.Model):
     __tablename__ = 'cement_and_manufacturing'
     zip = db.Column(db.Integer, primary_key=True)
     CO2e_MetricTonsPerYear = db.Column(db.Float)
 
-class electricity(db.Model):
+class Electricity(db.Model):
     __tablename__ = 'electricity'
     zip = db.Column(db.Integer, primary_key=True)
     service_id = db.Column(db.Integer)
@@ -36,14 +35,14 @@ class electricity(db.Model):
     residential_co2e_kg_per_year_per_zip = db.Column(db.Float)
     residential_co2e_metric_tons_per_year_per_zip = db.Column(db.Float)
 
-class natural_gas(db.Model):
+class Natural_gas(db.Model):
     __tablename__ = 'natural_gas'
     zip = db.Column(db.Integer, primary_key=True)
     residential_volume = db.Column(db.Float)
     commercial_volume = db.Column(db.Float)
     industrial_volume = db.Column(db.Float)
 
-class otis_transportation(db.Model):
+class Otis_transportation(db.Model):
     __tablename__ = 'otis_transportation'
     zip = db.Column(db.Integer, primary_key=True)
     CO2e_total_passenger_vehicles_gasoline_mT_per_year = db.Column(db.Float)
@@ -51,17 +50,17 @@ class otis_transportation(db.Model):
     CO2e_total_trucks_gasoline_mT_per_year = db.Column(db.Float)
     CO2e_total_trucks_diesel_mT_per_year = db.Column(db.Float)
 
-class waste(db.Model):
+class Waste(db.Model):
     __tablename__ = 'waste'
     zip = db.Column(db.Integer, primary_key=True)
     CO2e_MetricTonsPerYear = db.Column(db.Float)
 
-class aviation(db.Model):
+class Aviation(db.Model):
     __tablename__ = 'aviation'
     zip = db.Column(db.Integer, primary_key=True)
     CO2e_metricTonsPerYear = db.Column(db.Float)
 
-class zip_pop(db.Model):
+class Zip_pop(db.Model):
     __tablename__ = 'zip_pop'
     zip_id = db.Column(db.Integer, primary_key=True)
     zip = db.Column(db.Integer)
@@ -90,7 +89,7 @@ class Zip_data(db.Model):
     transportation_trucks_diesel = db.Column(db.Integer)
     aviation = db.Column(db.Integer)
 
-class solutions(db.Model):
+class Solutions(db.Model):
     __tablename__ = 'solutions_page'
     solutions_page_id = db.Column(db.Integer, primary_key=True)
     section = db.Column(db.Text)

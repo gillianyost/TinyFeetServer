@@ -13,12 +13,12 @@ app.config['SECRET_KEY'] = 'secret'
 db = SQLAlchemy(app)
 
 # -------------------------------- Blueprints -------------------------------- #
-# Must be defined after import db
+# Must be defined after db
 from server.sectors.views import sectors_blueprint
 app.register_blueprint(sectors_blueprint,url_prefix="/sectors")
 
 from server.survey.views import survey_blueprint
-app.register_blueprint(survey_blueprint,url_prefix="/survey")
+app.register_blueprint(survey_blueprint,url_prefix="")
 
 
 # from server.registration.views import registration_blueprint

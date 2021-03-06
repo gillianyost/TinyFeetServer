@@ -7,6 +7,10 @@ import collections
 
 survey_blueprint = Blueprint('survey', __name__, template_folder='../templates')
 
+def object_as_dict(obj):
+    return {c.key: coalesce(getattr(obj, c.key))
+        for c in inspect(obj).mapper.column_attrs}
+
 @survey_blueprint.route('/recommendations', methods=['GET', 'POST'])
 def recommendations():
     form = RecForm()

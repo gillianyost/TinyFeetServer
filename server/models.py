@@ -90,6 +90,18 @@ class Zip_data(db.Model):
     transportation_trucks_diesel = db.Column(db.Integer)
     aviation = db.Column(db.Integer)
 
+class solutions(db.Model):
+    __tablename__ = 'solutions_page'
+    solutions_page_id = db.Column(db.Integer, primary_key=True)
+    section = db.Column(db.Text)
+    subsection = db.Column(db.Text)
+    solution_description = db.Column(db.Text)
+    ghg_reduction_potential = db.Column(db.Integer)
+    equity = db.Column(db.Integer)
+    economic_sustainability = db.Column(db.Integer)
+    local_environmental_quality = db.Column(db.Integer)
+    enhances_public_safety = db.Column(db.Integer)
+    builds_resilience = db.Column(db.Integer)
 # --------- Table object allows for querying of tables by a variable --------- #
 
 # tables_dict = {table.__tablename__: table for table in db.Model.__subclasses__()}

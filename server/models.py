@@ -1,4 +1,6 @@
 from server import db
+from server import ma
+
 
 # --------------------------------- Sector Tables ORM -------------------------------- #
 
@@ -75,6 +77,7 @@ class Zip_data(db.Model):
     zip = db.Column(db.Integer, primary_key=True)
     city = db.Column(db.Text)
     county = db.Column(db.Text)
+    population2018 = db.Column(db.Integer)
     cement_and_manufacturing = db.Column(db.Integer)
     waste = db.Column(db.Integer)
     electricity_commercial = db.Column(db.Integer)
@@ -101,3 +104,9 @@ class Solutions(db.Model):
     local_environmental_quality = db.Column(db.Integer)
     enhances_public_safety = db.Column(db.Integer)
     builds_resilience = db.Column(db.Integer)
+
+# ---------- Marshmallow schema class to serialize data --------- #
+class Zip_Data_Schema(ma.SQLAlchemyAutoSchema):
+    class Meta:
+        model=Zip_data
+        load_instance=True

@@ -1,4 +1,5 @@
 var map;
+var CO2ePerPop;
  
 /* -------------------- Map Styling including alternate style ------------------- */
 var colorScale = {'#6C001D': 2000, '#DB0006': 200, '#FD990A': 100, '#FECB6C': 70, '#FFFF0D': 60, '#FFFFB0': 50, '#C8FF60': 40, '#8AE407': 30, '#5F9D05': 20, '#3C6104': 10}
@@ -134,12 +135,11 @@ function initMap() {
 
   // Load GeoJSON that contains zip code boundaries and geographic information
   // NOTE: This uses cross-domain XHR, and may not work on older browsers.
-  map.data.loadGeoJson('../static/map/colorado_map_data.json')
-  // map.data.loadGeoJson('https://raw.githubusercontent.com/nholmber/google-maps-statistics/master/map_data_reduced.json')
+  map.data.loadGeoJson('../static/map/coloradoMapGeo.json')
 
   //  Import data file 
   var ghgData;
-  fetch("../static/map/ghgData.json")
+  fetch("/emissions/getData")
     .then(response => {
       return response.json();
     })
@@ -152,14 +152,25 @@ function initMap() {
   // Colorize zip code areas based on average CO2e emissions 
   map.data.setStyle(function(feature) {
     for (item in ghgData) {
+      // Search geoJSON zip boundries file for the matching ghgData zip code.  OnLogn
       if (ghgData[item].zip.toString() != feature.getProperty('GEOID10').substring(2)) {
         continue;
       } else {
-        CO2ePerPop = (ghgData[item].GHG_transportation_total+
-          ghgData[item].GHG_energy_electric_total+
-          ghgData[item].GHG_energy_naturalGas_total+
-          ghgData[item].GHG_cement_and_manufacturing +
-          ghgData[item].GHG_waste) / ghgData[item].population2018;
+          CO2ePerPop = (
+          ghgData[item].aviation +
+          ghgData[item].cement_and_manufacturing+
+          ghgData[item].electricity_commercial+
+          ghgData[item].electricity_industrial+
+          ghgData[item].electricity_residential+
+          ghgData[item].naturalGas_commercial+
+          ghgData[item].naturalGas_industrial+
+          ghgData[item].naturalGas_residential+
+          ghgData[item].transportation_PV_diesel+
+          ghgData[item].transportation_PV_gas+
+          ghgData[item].transportation_trucks_diesel+
+          ghgData[item].transportation_trucks_gas+
+          ghgData[item].waste
+          ) / ghgData[item].population2018;
 
         colorKeys = Object.keys(colorScale);
         colorValues = Object.values(colorScale);
@@ -182,9 +193,7 @@ function initMap() {
     }
   });
 
-  // When the user hovers, tempt them to click by outlining zip code area.
-  // Call revertStyle() to remove all overrides. This will use the style rules
-  // defined in the function passed to setStyle()
+  // When the user hovers, outline zip code area.
   map.data.addListener('mouseover', function(event) {
     map.data.revertStyle();
     map.data.overrideStyle(event.feature, {strokeWeight: 4, strokeColor: 'gray'});
@@ -211,52 +220,109 @@ function initMap() {
 
     var city = "Unknown";
     var county = "Unknown";
-    var population = "Unknown";
-    var transportation = "Unknown";
-    var electricity = "Unknown";
-    var naturalGas = "Unknown";
+    var population2018 = "Unknown";
+    var transportation_PV_diesel = "Unknown";
+    var transportation_PV_gas = "Unknown";
+    var transportation_trucks_diesel = "Unknown";
+    var transportation_trucks_gas = "Unknown";
+    var electricity_commercial = "Unknown";
+    var electricity_industrial = "Unknown";
+    var electricity_residential = "Unknown";
+    var naturalGas_commercial = "Unknown";
+    var naturalGas_industrial = "Unknown";
+    var naturalGas_residential = "Unknown";
     var waste = "Unknown";
-    var cementManufacturing = "Unknown";
+    var cement_and_manufacturing = "Unknown";
+    var aviation = "Unknown";
+
 
 
     for (item in ghgData) {
       if (ghgData[item].zip.toString() != event.feature.getProperty('GEOID10').substring(2)) {
         continue;
       } else {
+
         city = ghgData[item].city;
         county = ghgData[item].county;
-        population = ghgData[item].population2018;
-        transportation = ghgData[item].GHG_transportation_total;
-        electricity = ghgData[item].GHG_energy_electric_total;
-        naturalGas = ghgData[item].GHG_energy_naturalGas_total;
-        waste = ghgData[item].GHG_waste;
-        cementManufacturing = ghgData[item].GHG_cement_and_manufacturing;
+        population2018 = ghgData[item].population2018;
+        transportation_PV_diesel = ghgData[item].transportation_PV_diesel;
+        transportation_PV_gas = ghgData[item].transportation_PV_gas;
+        transportation_trucks_diesel = ghgData[item].transportation_trucks_diesel;
+        transportation_trucks_gas = ghgData[item].transportation_trucks_gas;
+        electricity_commercial = ghgData[item].electricity_commercial;
+        electricity_industrial = ghgData[item].electricity_industrial;
+        electricity_residential = ghgData[item].electricity_residential;
+        naturalGas_commercial = ghgData[item].naturalGas_commercial;
+        naturalGas_industrial = ghgData[item].naturalGas_industrial;
+        naturalGas_residential = ghgData[item].naturalGas_residential;
+        waste = ghgData[item].waste;
+        cement_and_manufacturing = ghgData[item].cement_and_manufacturing;
+        aviation = ghgData[item].aviation;
 
-        CO2ePerPop = (ghgData[item].GHG_transportation_total+
-          ghgData[item].GHG_energy_electric_total+
-          ghgData[item].GHG_energy_naturalGas_total+
-          ghgData[item].GHG_cement_and_manufacturing +
-          ghgData[item].GHG_waste) / ghgData[item].population2018;
+      // var transportationTotal = transportation_PV_diesel+
+      //   transportation_PV_gas+
+      //   transportation_trucks_diesel+
+      //   transportation_trucks_gas;
+  
+      // var electricityTotal = electricity_commercial+
+      //   electricity_industrial+
+      //   electricity_residential;
+  
+      // var naturalGasTotal = naturalGas_commercial+
+      //   naturalGas_industrial+
+      //   naturalGas_residential;
+    
+
+        // CO2ePerPop = (
+        //   aviation +
+        //   cement_and_manufacturing+
+        //   electricity_commercial+
+        //   electricity_industrial+
+        //   electricity_residential+
+        //   naturalGas_commercial+
+        //   naturalGas_industrial+
+        //   naturalGas_residential+
+        //   transportation_PV_diesel+
+        //   transportation_PV_gas+
+        //   transportation_trucks_diesel+
+        //   transportation_trucks_gas+
+        //   waste
+        //   ) / population2018;
+
         break;
       }
   }
+
+
+
 
     // Create content for info window
     var contentString = '<div id="content"><div id="siteNotice"></div>'+
       '<h2 id="firstHeading" class="firstHeading">Zip code: ' + zip + '</h2>'+
       '<h3>City: ' + city + '</h3>'+
       '<h3>County: ' + county + '</h3>'+
-      '<h3>Population: ' + population + '</h3>'+
+      '<h3>Population: ' + population2018 + '</h3>'+
 
-      '<h3>Total CO2e Per Pop: ' + CO2ePerPop + '</h3>'+
+      '<h3>Average CO2e Per Person: ' + CO2ePerPop.toFixed(2) + '</h3>'+
 
-      '<div id="bodyContent" style="font-size: 12pt;" >'+
-      '</br>Transportation: ' + `<b>${transportation}</b> Metric Tons CO2e/ Year` +
-      '</br>Electricity: '+ `<b>${electricity}</b> Metric Tons CO2e/ Year` +
-      '</br>Natural Gas: '+ `<b>${naturalGas}</b> Metric Tons CO2e/ Year` +
-      '</br>Waste: '+ `<b>${waste}</b> Metric Tons CO2e/ Year` +
-      '</br>Cement and Manufacturing: '+ `<b>${cementManufacturing}</b> Metric Tons CO2e/ Year` +'</p>'+
-      '</div>'+
+      // '<div id="bodyContent" style="font-size: 12pt;" >'+
+      // '</br>Transportation Cars Using Diesel: ' + `<b>${transportation_PV_diesel}</b> Metric Tons CO2e/ Year` +
+      // '</br>Transportation Cars Using Gas: ' + `<b>${transportation_PV_gas}</b> Metric Tons CO2e/ Year` +
+      // '</br>Transportation Trucks Using Diesel: ' + `<b>${transportation_trucks_diesel}</b> Metric Tons CO2e/ Year` +
+      // '</br>Transportation Trucks Using Gas: ' + `<b>${transportation_trucks_gas}</b> Metric Tons CO2e/ Year` +
+
+      // '</br>Electricity Commercial Sector: '+ `<b>${electricity_commercial}</b> Metric Tons CO2e/ Year` +
+      // '</br>Electricity Industrial Sector: '+ `<b>${electricity_industrial}</b> Metric Tons CO2e/ Year` +
+      // '</br>Electricity Residential Sector: '+ `<b>${electricity_residential}</b> Metric Tons CO2e/ Year` +
+
+      // '</br>Natural Gas Commercial Sector: '+ `<b>${naturalGas_commercial}</b> Metric Tons CO2e/ Year` +
+      // '</br>Natural Gas Industrial Sector: '+ `<b>${naturalGas_industrial}</b> Metric Tons CO2e/ Year` +
+      // '</br>Natural Gas Residential Sector: '+ `<b>${naturalGas_residential}</b> Metric Tons CO2e/ Year` +
+
+      // '</br>Waste: '+ `<b>${waste}</b> Metric Tons CO2e/ Year` +
+      // '</br>Aviation: '+ `<b>${aviation}</b> Metric Tons CO2e/ Year` +
+      // '</br>Cement and Manufacturing: '+ `<b>${cement_and_manufacturing}</b> Metric Tons CO2e/ Year` +'</p>'+
+      // '</div>'+
 
       `<div id="piechart" style=""></div>` +
       '</div>';
@@ -296,11 +362,22 @@ function initMap() {
     function drawChart() {
       var data = google.visualization.arrayToDataTable([
         ['Sector', 'Metric Tons CO2e/ Year'],
-        ['Transportation', convertToNum(transportation)],
-        ['Electricity', convertToNum(electricity)],
-        ['Natural Gas', convertToNum(naturalGas)],
+        ['Transportation Cars Using Diesel', convertToNum(transportation_PV_diesel)],
+        ['Transportation Cars Using Gas', convertToNum(transportation_PV_gas)],
+        ['Transportation Trucks Using Diesel', convertToNum(transportation_trucks_diesel)],
+        ['Transportation Trucks Using Gas', convertToNum(transportation_trucks_gas)],
+
+        ['Electricity Commercial Sector', convertToNum(electricity_commercial)],
+        ['Electricity Industrial Sector', convertToNum(electricity_industrial)],
+        ['Electricity Residential Sector', convertToNum(electricity_residential)],
+
+        ['Natural Gas Commercial Sector', convertToNum(naturalGas_commercial)],
+        ['Natural Gas Industrial Sector', convertToNum(naturalGas_industrial)],
+        ['Natural Gas Residential Sector', convertToNum(naturalGas_residential)],
+
         ['Waste', convertToNum(waste)],
-        ['Cement And Manufacturing', convertToNum(cementManufacturing)]
+        ['Aviation', convertToNum(aviation)],
+        ['Cement And Manufacturing', convertToNum(cement_and_manufacturing)]
       ]);
 
       var options = {

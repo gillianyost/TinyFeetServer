@@ -1,9 +1,12 @@
 from flask import Blueprint,render_template,redirect,url_for,request, jsonify, flash
 from server import db
-from server.emissions.forms import CityCountyZipDropDown, tableSelectForm
-from server.models import Cement_and_manufacturing, Electricity, Natural_gas, Otis_transportation, Waste, Aviation, Zip_pop, Zip_data
 from sqlalchemy import distinct, inspect
+from server.emissions.forms import CityCountyZipDropDown, tableSelectForm
+from server.models import Cement_and_manufacturing, Electricity, Natural_gas, Otis_transportation, Waste, Aviation, Zip_pop, Zip_data, Zip_Data_Schema
+# from server.models import *
 import collections
+from flask_marshmallow import Marshmallow
+
 # import flask_excel as excel
 
 emissions_blueprint = Blueprint('emissions', __name__, template_folder='../templates')
@@ -263,6 +266,16 @@ def zip(county, city):
     return jsonify({'zip_codes' : zipArray})
 
 
+# -------------------------------- Google Maps ------------------------------- #
+
+# For some reason, for google map to load it cannot be in top level directory
 @emissions_blueprint.route('/map')
 def googleMap():
     return render_template('mainPages/map.html')
+
+
+@emissions_blueprint.route('/getData')
+def getData():
+    ghgData = Zip_data.query.all()
+    output = Zip_Data_Schema(many=True).dump(ghgData)
+    return jsonify(output)

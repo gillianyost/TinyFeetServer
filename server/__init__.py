@@ -14,8 +14,8 @@ db = SQLAlchemy(app)
 
 # -------------------------------- Blueprints -------------------------------- #
 # Must be defined after db
-from server.sectors.views import sectors_blueprint
-app.register_blueprint(sectors_blueprint,url_prefix="/sectors")
+from server.emissions.views import emissions_blueprint
+app.register_blueprint(emissions_blueprint,url_prefix="/emissions")
 
 from server.survey.views import survey_blueprint
 app.register_blueprint(survey_blueprint,url_prefix="")

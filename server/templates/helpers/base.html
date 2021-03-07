@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,8 +19,8 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/styledTable.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/style.css') }}">
 
-    <!-- Loads script for google chart only on that page -->
-    {% block script%}{% endblock %}
+    <!-- Loads page specific scripts/css -->
+    {% block header%}{% endblock %}
 </head>
 <body>
     {% include 'helpers/navbar.html' %}
@@ -31,6 +30,6 @@
     {% block content %}
     {% endblock %}
 
-<script src="{{ url_for('static', filename='scripts/script.js') }}"></script>
+
 </body>
 </html>

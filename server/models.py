@@ -101,8 +101,3 @@ class Solutions(db.Model):
     local_environmental_quality = db.Column(db.Integer)
     enhances_public_safety = db.Column(db.Integer)
     builds_resilience = db.Column(db.Integer)
-# --------- Table object allows for querying of tables by a variable --------- #
-
-# tables_dict = {table.__tablename__: table for table in db.Model.__subclasses__()}
-# def table_object(table_name):
-#     return tables_dict.get(table_name)

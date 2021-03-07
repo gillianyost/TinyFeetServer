@@ -5,7 +5,7 @@ import collections
 
 from server.models import Cement_and_manufacturing, Electricity, Natural_gas, Otis_transportation, Waste, Aviation, Zip_pop, Zip_data, Solutions
 from server.survey.forms import RecForm
-from server.sectors.views import object_as_dict
+from server.emissions.views import object_as_dict, coalesce
 import collections
 
 
@@ -19,7 +19,6 @@ def recommendations():
     columnNames = []
     tableData = []
     if request.method == 'POST':
-        columnNames = Solutions.__table__.columns.keys()
        
         if form.allSol.data:
             # query = Solutions.query(Solutions.solution_description, \

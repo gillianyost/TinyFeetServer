@@ -1,6 +1,6 @@
 {% extends "helpers/base.html" %} 
 {% block title %} Select {% endblock %} 
-{%block script %} 
+{%block header %} 
 {% if zipData %}
 
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js" ></script>
@@ -58,5 +58,6 @@
 
 <!-- My script, used for dynamic dropdown item switching -->
 <script src="{{ url_for('static', filename='scripts/dynamicOptions.js') }}"></script>
+
 
 {% endblock %}

@@ -97,7 +97,7 @@ var style = [
 ];
 
 /* -------------------  Define actual Google Maps object ------------------ */
-
+// Helper function
 function convertToNum(item){
   if (isNaN(item) || item == null){
     return 0;
@@ -110,15 +110,15 @@ function convertToNum(item){
 function initMap() {
   // Initialize map
   var map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 12,
-    mapTypeControl: true,
+    zoom: 8,
+    mapTypeControl: false,
     streetViewControl: false,
     styles: style
   });
 
   // Center map using geocoding
   var geocoder = new google.maps.Geocoder();
-  var address = '80202';
+  var address = 'Colorado';
   geocodeAddress(geocoder, map, address);
 
   function geocodeAddress(geocoder, map, address) {
@@ -138,14 +138,12 @@ function initMap() {
   map.data.loadGeoJson('../static/map/coloradoMapGeoZip.json')
 
   //  Import data file 
-  var ghgData;
   fetch("/emissions/getData")
     .then(response => {
       return response.json();
     })
-    .then(function(data){
-      ghgData = data;
-    });
+    .then(function(ghgData){
+
 
 
 
@@ -292,6 +290,7 @@ function initMap() {
         break;
       }
   }
+  
 
 
     // Create content for info window
@@ -353,7 +352,8 @@ function initMap() {
     infowindow.open(map, marker);
 
 
-    // Draw Pie Chart
+/* ----------------------------- Draw pie chart ----------------------------- */
+
     google.charts.load('current', {'packages':['corechart']});
     google.charts.setOnLoadCallback(drawChart);
 
@@ -377,16 +377,20 @@ function initMap() {
         ['Aviation', convertToNum(aviation)],
         ['Cement And Manufacturing', convertToNum(cement_and_manufacturing)]
       ]);
-
+      
+      // Pie chart options
       var options = {
-        title: 'Economic Sector CO2e Contributions (MT/Y)'
+        title: 'Economic Sector CO2e Contributions (MT/Y)',
+        height: 400,
+        width: 500,
+        legend: { position: "bottom" }
       };
       var chart = new google.visualization.PieChart(document.getElementById('piechart'));
       chart.draw(data, options);
     }
     
   }
-
+});
 /* --------------------------------- LEGEND --------------------------------- */
 
   // Create a color bar legend for the colored zip code areas.

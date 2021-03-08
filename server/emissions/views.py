@@ -51,6 +51,9 @@ def readTable(tableName):
     if tableName == "waste":
         columnNames = Waste.__table__.columns.keys()
         query = Waste.query.all()
+    elif tableName == "otis_transportation":
+        columnNames = Otis_transportation.__table__.columns.keys()
+        query = Cement_and_manufacturing.query.all()
     elif tableName == "cement_and_manufacturing":
         columnNames = Cement_and_manufacturing.__table__.columns.keys()
         query = Cement_and_manufacturing.query.all()
@@ -128,7 +131,7 @@ def zip(county, city):
 
 
 
-# ------- diffChart Compare Data Home Route ------------------------------------------------------------------------- #
+# --------------------------------- Route to handle chart page home and redict form input for Compare ------------------------------------- #
 
 @emissions_blueprint.route('/chart', methods=['GET', 'POST'])
 def chart():
@@ -145,13 +148,10 @@ def chart():
         if form.singleSubmit.data:
             pass
         elif form.compareSubmit.data:
-            form.countyField.data = county
-            form.cityField.data = city
-            form.zipField.data = zip
 
-            form.countyField.choices = [(row.county) for row in db.session.query(Zip_pop.county).distinct(Zip_pop.county).order_by(Zip_pop.county)]
-            form.cityField.choices = [(row.city) for row in db.session.query(Zip_pop.city).filter_by(county=county).distinct(Zip_pop.county).order_by(Zip_pop.city)]
-            form.zipField.choices = [(row.zip) for row in db.session.query(Zip_pop.zip).filter_by(city=city).all()]
+            form.countyField.choices = ["Select Option"] + [(row.county) for row in db.session.query(Zip_pop.county).distinct(Zip_pop.county).order_by(Zip_pop.county)]
+            form.cityField.choices = ["Select Option"] + [(row.city) for row in db.session.query(Zip_pop.city).distinct(Zip_pop.city).order_by(Zip_pop.city)]
+            form.zipField.choices = ["Select Option"] + [(row.zip) for row in db.session.query(Zip_pop.zip).distinct(Zip_pop.zip).order_by(Zip_pop.zip)]
 
             form.countyField2.choices = ["Select Option"] + [(row.county) for row in db.session.query(Zip_pop.county).distinct(Zip_pop.county).order_by(Zip_pop.county)]
             form.cityField2.choices = ["Select Option"] + [(row.city) for row in db.session.query(Zip_pop.city).distinct(Zip_pop.city).order_by(Zip_pop.city)]
@@ -214,13 +214,12 @@ def chart():
     return render_template('mainPages/chart.html', form=form)
 
 
-# -------------------------- diffChart compare two zip codes ------------------------- #
+# -------------------------- Route to handle zip uri variable(s) and compare two zip codes ------------------------- #
 
 @emissions_blueprint.route('/chart/zip/<zip>')
 @emissions_blueprint.route('/chart/zip/<zip>/<zip2>')
 def chartZip(zip, zip2=None):
-    print(zip)
-    print(zip2)
+
     form = CityCountyZipDropDown()
     query = db.session.query(Zip_data).filter_by(zip=zip)
     if zip2 != None:
@@ -243,11 +242,10 @@ def chartZip(zip, zip2=None):
     data.pop('zip')
     city = data.pop('city')
     county = data.pop('county')
-    # Must remove aviation data point for now because google charts does not like decimal data type
-    aviation = data.pop('aviation')
+
     # Convert to list of lists and add labels
     chartData = list(map(list, data.items()))
-    chartData.insert(0, ['Sector', 'Emissions'])
+    chartData.insert(0, ['Sector', 'GHG Emissions'])
 
     form.countyField.choices = [(row.county) for row in db.session.query(Zip_pop.county).distinct(Zip_pop.county).order_by(Zip_pop.county)]
     form.cityField.choices = [(row.city) for row in db.session.query(Zip_pop.city).filter_by(county=county).distinct(Zip_pop.county).order_by(Zip_pop.city)]
@@ -265,11 +263,10 @@ def chartZip(zip, zip2=None):
         data2.pop('zip')
         city2 = data2.pop('city')
         county2 = data2.pop('county')
-        # Must remove aviation data point for now because google charts does not like decimal data type
-        aviation2 = data2.pop('aviation')
+
         # Convert to list of lists and add labels
         chartData2 = list(map(list, data2.items()))
-        chartData2.insert(0, ['Sector', 'Emissions'])
+        chartData2.insert(0, ['Sector', 'GHG Emissions'])
 
         form.countyField2.choices = [(row.county) for row in db.session.query(Zip_pop.county).distinct(Zip_pop.county).order_by(Zip_pop.county)]
         form.cityField2.choices = [(row.city) for row in db.session.query(Zip_pop.city).filter_by(county=county2).distinct(Zip_pop.county).order_by(Zip_pop.city)]
@@ -277,11 +274,11 @@ def chartZip(zip, zip2=None):
         form.zipField2.data = zip2
         form.cityField2.data = city2
         form.countyField2.data = county2
-        return render_template('mainPages/chart.html', form=form, chartData1=chartData, chartData2=chartData2, area=zip, area2=zip2, compare=True)
+        return render_template('mainPages/chart.html', form=form, chartData1=chartData, chartData2=chartData2, area1=zip, area2=zip2, compare=True)
     return render_template('mainPages/chart.html', form=form, chartData=chartData, area=zip)
 
 
-# -------------------------- diffChart compare two cities ------------------------- #
+# -------------------------- Route to handle city uri variable(s) and compare ------------------------- #
 
 @emissions_blueprint.route('/chart/city/<city>')
 @emissions_blueprint.route('/chart/city/<city>/<city2>')
@@ -308,8 +305,7 @@ def chartCity(city, city2=None):
             d.pop('zip')
             city = d.pop('city')
             county = d.pop('county')
-            # Must remove aviation data point for now because google charts does not like decimal data type
-            d.pop('aviation')
+
             rows.append(d)
         
         # sum the values with same keys 
@@ -320,7 +316,7 @@ def chartCity(city, city2=None):
 
         # Convert to list of lists and add labels
         chartData = list(map(list, data.items()))
-        chartData.insert(0, ['Sector', 'Emissions'])
+        chartData.insert(0, ['Sector', 'GHG Emissions'])
 
         form.countyField.choices = [(row.county) for row in db.session.query(Zip_pop.county).distinct(Zip_pop.county).order_by(Zip_pop.county)]
         form.cityField.choices = [(row.city) for row in db.session.query(Zip_pop.city).filter_by(county=county).distinct(Zip_pop.county).order_by(Zip_pop.city)]
@@ -337,8 +333,6 @@ def chartCity(city, city2=None):
                 d.pop('zip')
                 city2 = d.pop('city')
                 county2 = d.pop('county')
-                # Must remove aviation data point for now because google charts does not like decimal data type
-                d.pop('aviation')
                 rows.append(d)
             
             # sum the values with same keys 
@@ -349,7 +343,7 @@ def chartCity(city, city2=None):
 
             # Convert to list of lists and add labels
             chartData2 = list(map(list, data2.items()))
-            chartData2.insert(0, ['Sector', 'Emissions'])
+            chartData2.insert(0, ['Sector', 'GHG Emissions'])
 
             form.countyField2.choices = [(row.county) for row in db.session.query(Zip_pop.county).distinct(Zip_pop.county).order_by(Zip_pop.county)]
             form.cityField2.choices = [(row.city) for row in db.session.query(Zip_pop.city).filter_by(county=county2).distinct(Zip_pop.county).order_by(Zip_pop.city)]
@@ -357,11 +351,11 @@ def chartCity(city, city2=None):
             form.zipField2.data = ["Select Option"]
             form.cityField2.data = city2
             form.countyField2.data = county2
-            return render_template('mainPages/chart.html', form=form, chartData1=chartData, chartData2=chartData2, area=city, area2=city2, compare=True)
+            return render_template('mainPages/chart.html', form=form, chartData1=chartData, chartData2=chartData2, area1=city, area2=city2, compare=True)
         return render_template('mainPages/chart.html', form=form, chartData=chartData, area=city)
 
 
-# -------------------------- Diffchart compare two counties ------------------------- #
+# -------------------------- Route to handle county uri variable(s) and compare ------------------------- #
 
 @emissions_blueprint.route('/chart/county/<county>')
 @emissions_blueprint.route('/chart/county/<county>/<county2>')
@@ -386,8 +380,6 @@ def chartCounty(county, county2=None):
             d.pop('zip')
             city = d.pop('city')
             county = d.pop('county')
-            # Must remove aviation data point for now because google charts does not like decimal data type
-            d.pop('aviation')
             rows.append(d)
         
         # sum the values with same keys 
@@ -398,7 +390,7 @@ def chartCounty(county, county2=None):
 
         # Convert to list of lists and add labels
         chartData = list(map(list, data.items()))
-        chartData.insert(0, ['Sector', 'Emissions'])
+        chartData.insert(0, ['Sector', 'GHG Emissions'])
 
         print(chartData)
 
@@ -415,10 +407,8 @@ def chartCounty(county, county2=None):
                 d = object_as_dict(row)
                 d.pop('population2018')
                 d.pop('zip')
-                # Must remove aviation data point for now because google charts does not like decimal data type
-                d.pop('aviation')
                 city2 = d.pop('city')
-                county = d.pop('county')
+                county2 = d.pop('county')
 
                 rows.append(d)
             
@@ -430,9 +420,8 @@ def chartCounty(county, county2=None):
 
             # Convert to list of lists and add labels
             chartData2 = list(map(list, data2.items()))
-            chartData2.insert(0, ['Sector', 'Emissions'])
+            chartData2.insert(0, ['Sector', 'GHG Emissions'])
 
-            print(chartData2)
 
             form.countyField2.choices = [(row.county) for row in db.session.query(Zip_pop.county).distinct(Zip_pop.county).order_by(Zip_pop.county)]
             form.cityField2.choices = ["Select Option"] + [(row.city) for row in db.session.query(Zip_pop.city).filter_by(county=county2).distinct(Zip_pop.county).order_by(Zip_pop.city)]
@@ -441,5 +430,5 @@ def chartCounty(county, county2=None):
             form.cityField2.data = ["Select Option"]
             form.countyField2.data = county2
 
-            return render_template('mainPages/chart.html', form=form, chartData1=chartData, chartData2=chartData2, area=county, area2=county2, compare=True)
+            return render_template('mainPages/chart.html', form=form, chartData1=chartData, chartData2=chartData2, area1=county, area2=county2, compare=True)
         return render_template('mainPages/chart.html', form=form, chartData=chartData, area=county)

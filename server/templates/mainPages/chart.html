@@ -12,7 +12,7 @@
       var data = google.visualization.arrayToDataTable( {{ chartData | safe }} );
 
       var options = {
-        title: 'Sector Emissions Data (Metric Tons/ Year) for {{ area | safe }}',
+        title: 'Sector GHG Emissions Data (mT CO2e/year) for {{ area | safe }}',
         height: 500,
         bar: { groupWidth: "95%" },
         legend: { position: "side" },
@@ -36,13 +36,13 @@
 
 
         var columnChart_options = {
-            title: 'Sector Emissions Data (Metric Tons/ Year) for {{ area }} and {{ area2 }}',
+            title: 'Sector GHG Emissions Data (mT CO2e/year) for {{ area1 }} and {{ area2 }}',
             height: 500,
             legend: { position: "right" },
             diff: { 
             oldData: { opacity: 1,
                  tooltip:{
-                    prefix:'{{ area | safe }}'
+                    prefix:'{{ area1 | safe }}'
                     } 
                   }, 
             newData: { 
@@ -85,28 +85,29 @@
 
   <div class="container">
     {% if not compare %}
-    <h1>Select an area to chart data for</h1>
+    <h1>Chart Data For A Single Area</h1>
     <form action="/emissions/chart" method="POST">
+      <br>
+      <div class="row">
+          {{ form.compareSubmit }}
+      </div>
+      <br>
         <div class="row">
             {{ form.csrf_token }}
-            <div class="col-md-4">{{ form.countyField.label }}<br>{{ form.countyField }}<br>{{ form.countySubmit }}</div>
-            <div class="col-md-4">{{ form.cityField.label }}<br>{{ form.cityField }}<br>{{ form.citySubmit }}</div>
-            <div class="col-md-4">{{ form.zipField.label }}<br>{{ form.zipField }}<br>{{ form.zipSubmit }}</div>
+            <div class="col-md-4">{{ form.countyField.label }}<br>{{ form.countyField }}<br><br>{{ form.countySubmit }}<br></div>
+            <div class="col-md-4">{{ form.cityField.label }}<br>{{ form.cityField }}<br><br>{{ form.citySubmit }}<br></div>
+            <div class="col-md-4">{{ form.zipField.label }}<br>{{ form.zipField }}<br><br>{{ form.zipSubmit }}<br></div>
         </div>
-        {% if chartData %}
-        <br>
-        <div class="row">
-          <div class="col-md-3 offset-md-3">
-            {{ form.compareSubmit }}
-          </div>
-        </div>
-        {% endif %}
     </form>
 
     {% endif %}
     {% if compare %}
-    <h1>Select two areas to compare</h1>
+    <h1>Chart Data And Compare Two Areas</h1>
     <form action="/emissions/chart" method="POST">
+      <div class="row">
+          {{ form.singleSubmit }}
+      </div>
+      <br>
       <div class="row">
           {{ form.csrf_token }}
           <div class="col-md-4">{{ form.countyField.label }}<br>{{ form.countyField }}<br></div>
@@ -114,16 +115,11 @@
           <div class="col-md-4">{{ form.zipField.label }}<br>{{ form.zipField }}<br></div>
       </div>
       <div class="row">
-          <div class="col-md-4"><br>{{ form.countyField2 }}<br>{{ form.countyCompareSubmit }}<br></div>
-          <div class="col-md-4"><br>{{ form.cityField2 }}<br>{{ form.cityCompareSubmit }}<br></div>
-          <div class="col-md-4"><br>{{ form.zipField2 }}<br>{{ form.zipCompareSubmit }}<br></div>
+          <div class="col-md-4"><br>{{ form.countyField2 }}<br><br>{{ form.countyCompareSubmit }}<br></div>
+          <div class="col-md-4"><br>{{ form.cityField2 }}<br><br>{{ form.cityCompareSubmit }}<br></div>
+          <div class="col-md-4"><br>{{ form.zipField2 }}<br><br>{{ form.zipCompareSubmit }}<br></div>
       </div>
       <br>
-      <div class="row">
-        <div class="col-md-3 offset-md-3">
-          {{ form.singleSubmit }}
-        </div>
-      </div>
   </form>
     {% endif %}
 

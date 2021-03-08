@@ -1,0 +1,153 @@
+{% extends "helpers/base.html" %} 
+{% block title %} Compare Chart {% endblock %} 
+{%block header %}
+
+{% if chartData %}
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js" ></script>
+<script type="text/javascript">
+    google.charts.load("current", {packages:["corechart"]});
+    google.charts.setOnLoadCallback(drawChart);
+    function drawChart() {
+      // Jinja "safe" filter prevents automatic html special character escaping
+      var data = google.visualization.arrayToDataTable( {{ chartData | safe }} );
+
+      var options = {
+        title: 'Sector Emissions Data (Metric Tons/ Year) for {{ area | safe }}',
+        height: 500,
+        bar: { groupWidth: "95%" },
+        legend: { position: "side" },
+      };
+
+      var chart = new google.visualization.ColumnChart(document.getElementById('chart'));
+      chart.draw(data, options);
+    }
+</script>
+{% endif %} 
+
+{% if chartData2 %}
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js" ></script>
+<script type="text/javascript">
+    google.charts.load("current", {packages:["corechart"]});
+    google.charts.setOnLoadCallback(drawChart);
+    function drawChart() {
+        // Jinja "safe" filter prevents automatic html special character escaping
+        var data1 = google.visualization.arrayToDataTable( {{ chartData1 | safe }} );
+        var data2 = google.visualization.arrayToDataTable( {{ chartData2 | safe }} );
+
+
+        var columnChart_options = {
+            title: 'Sector Emissions Data (Metric Tons/ Year) for {{ area }} and {{ area2 }}',
+            height: 500,
+            legend: { position: "right" },
+            diff: { 
+            oldData: { opacity: 1,
+                 tooltip:{
+                    prefix:'{{ area | safe }}'
+                    } 
+                  }, 
+            newData: { 
+              opacity: .6, widthFactor: .6,
+                 tooltip:{
+                    prefix:'{{ area2 | safe }}'
+                    }
+                 }
+            }
+        };
+        // var pieChart_options = { 
+        //   'title':'Sector Emissions Data (Metric Tons/ Year) for {{ area }} and {{ area2 }}',
+        //              'height':500,
+        //   diff: { newData: { opacity: 0.8 } } };
+
+        var columnDiff = new google.visualization.ColumnChart(document.getElementById('columnChartDiff'));
+        var pieDiff = new google.visualization.PieChart(document.getElementById('pieChartDiff'));
+
+        var diffData = columnDiff.computeDiff(data1, data2);
+        columnDiff.draw(diffData, columnChart_options);
+        pieDiff.draw(diffData, columnChart_options)
+
+    }
+</script>
+{% endif %}
+
+{% endblock %} 
+{% block content %} 
+
+{# get_flashed_messages() is auto sent to the template with the flash() call #}
+{% for mess in get_flashed_messages()  %}
+<!-- Message Banner -->
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close" class="fade close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+  {{mess}}
+  </div>
+{% endfor %}
+
+  <div class="container">
+    {% if not compare %}
+    <h1>Select an area to chart data for</h1>
+    <form action="/emissions/chart" method="POST">
+        <div class="row">
+            {{ form.csrf_token }}
+            <div class="col-md-4">{{ form.countyField.label }}<br>{{ form.countyField }}<br>{{ form.countySubmit }}</div>
+            <div class="col-md-4">{{ form.cityField.label }}<br>{{ form.cityField }}<br>{{ form.citySubmit }}</div>
+            <div class="col-md-4">{{ form.zipField.label }}<br>{{ form.zipField }}<br>{{ form.zipSubmit }}</div>
+        </div>
+        {% if chartData %}
+        <br>
+        <div class="row">
+          <div class="col-md-3 offset-md-3">
+            {{ form.compareSubmit }}
+          </div>
+        </div>
+        {% endif %}
+    </form>
+
+    {% endif %}
+    {% if compare %}
+    <h1>Select two areas to compare</h1>
+    <form action="/emissions/chart" method="POST">
+      <div class="row">
+          {{ form.csrf_token }}
+          <div class="col-md-4">{{ form.countyField.label }}<br>{{ form.countyField }}<br></div>
+          <div class="col-md-4">{{ form.cityField.label }}<br>{{ form.cityField }}<br></div>
+          <div class="col-md-4">{{ form.zipField.label }}<br>{{ form.zipField }}<br></div>
+      </div>
+      <div class="row">
+          <div class="col-md-4"><br>{{ form.countyField2 }}<br>{{ form.countyCompareSubmit }}<br></div>
+          <div class="col-md-4"><br>{{ form.cityField2 }}<br>{{ form.cityCompareSubmit }}<br></div>
+          <div class="col-md-4"><br>{{ form.zipField2 }}<br>{{ form.zipCompareSubmit }}<br></div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-md-3 offset-md-3">
+          {{ form.singleSubmit }}
+        </div>
+      </div>
+  </form>
+    {% endif %}
+
+  </div>
+
+{% if chartData %}
+<div class="container">
+  <br>
+  <h3>All Sector GHG Data Chart</h3>
+  <div id="chart"></div>
+</div>
+{% endif %}
+
+{% if compare %}
+<div class="container">
+  <br>
+  <h3>All Sector GHG Data Chart</h3>
+  <div id="columnChartDiff"></div>
+  <div id="pieChartDiff"></div>
+</div>
+{% endif %}
+
+<!-- My script, used for dynamic dropdown item switching -->
+<script src="{{ url_for('static', filename='scripts/dynamicOptions.js') }}"></script>
+
+
+{% endblock %}

@@ -3,12 +3,23 @@ from wtforms import SelectField, SubmitField
 
 
 class CityCountyZipDropDown(FlaskForm):
-    county = SelectField('County')
-    city = SelectField('City')
-    zip = SelectField('Zip')
+    countyField = SelectField('County')
+    cityField = SelectField('City')
+    zipField = SelectField('Zip')
+    countyField2 = SelectField('County')
+    cityField2 = SelectField('City')
+    zipField2 = SelectField('Zip')
     countySubmit = SubmitField('Get Data By County')
     citySubmit = SubmitField('Get Data By City')
     zipSubmit = SubmitField('Get Data By Zip')
+
+    compareSubmit = SubmitField('Compare this to another area')
+    singleSubmit = SubmitField('Go back to selecting a single area')
+
+    countyCompareSubmit = SubmitField('Compare these Counties')
+    cityCompareSubmit = SubmitField('Compare these Cities')
+    zipCompareSubmit = SubmitField('Compare these Zip Codes')
+
 
 class tableSelectForm(FlaskForm):
     download = SubmitField('Download Table Data')

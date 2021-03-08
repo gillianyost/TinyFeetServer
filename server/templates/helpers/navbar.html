@@ -23,18 +23,6 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <!-- EVERY ITEM IN NAVBAR IS JUST A LIST ITEM -->
-      <li class="nav-item active">
-        <a class="nav-link" href="/emissions">Emissions</a>
-      </li>
-      <!-- HERE IS ANOTHER ONE, BUT THE LINK DOESNT "LOOK" ACTIVE -->
-      <li class="nav-item">
-        <a class="nav-link" href="/recommendations">Recommendations</a>
-      </li>
-      <!-- HERE IS ANOTHER ONE, BUT THE LINK DOESNT "LOOK" ACTIVE -->
-      <li class="nav-item">
-        <a class="nav-link" href="/news">News</a>
-      </li>
-
       <!-- WE CAN ALSO CREATE DROPDOWN MENUS -->
       <li class="nav-item dropdown">
         <!-- TOP LEVEL DROPDOWN -->
@@ -47,21 +35,38 @@
           aria-haspopup="true"
           aria-expanded="false"
         >
-          Sectors
+          Emissions
         </a>
 
         <!-- ONE DIVISION IN THE DROPDOWN -->
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="/sectors/read">Read Tables</a>
+          <a class="dropdown-item" href="/emissions">Emissions</a>
           <!-- ANOTHER DIVISION IN THE DROPDOWN -->
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="/sectors/select">Select Zip</a>
+          <a class="dropdown-item" href="/emissions/read">Read Tables</a>
+          <!-- ANOTHER DIVISION IN THE DROPDOWN -->
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="/emissions/select">Chart Data</a>
+          <!-- ANOTHER DIVISION IN THE DROPDOWN -->
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="/emissions/map">Map Data</a>
         </div>
+        
       </li>
+      <!-- HERE IS ANOTHER ONE, BUT THE LINK DOESNT "LOOK" ACTIVE -->
+      <li class="nav-item">
+        <a class="nav-link" href="/recommendations">Recommendations</a>
+      </li>
+      <!-- HERE IS ANOTHER ONE, BUT THE LINK DOESNT "LOOK" ACTIVE -->
+      <li class="nav-item">
+        <a class="nav-link" href="/news">News</a>
+      </li>
+
+
     </ul>
 
     <!-- CAN EVEN ADD A SEARCH FORM -->
-    <form action="{{ url_for('sectors.select') }}" method="POST" class="form-inline my-2 my-lg-0">
+    <form action="{{ url_for('emissions.select') }}" method="POST" class="form-inline my-2 my-lg-0">
       <input
         class="form-control mr-sm-2"
         type="number"

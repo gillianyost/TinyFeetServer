@@ -1,0 +1,776 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?mso-application progid="Excel.Sheet"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:x="urn:schemas-microsoft-com:office:excel"
+xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+xmlns:html="http://www.w3.org/TR/REC-html40">
+<Worksheet ss:Name="Table1">
+	<Table>
+		<Row>
+			<Cell><Data ss:Type="String">zip</Data></Cell>
+			<Cell><Data ss:Type="String">CO2e_MetricTonsPerYear</Data></Cell>
+		</Row>
+
+		<Row>
+			<Cell><Data ss:Type="Number">80001</Data></Cell>
+			<Cell><Data ss:Type="Number">0</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">80002</Data></Cell>
+			<Cell><Data ss:Type="Number">2300.12</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">80003</Data></Cell>
+			<Cell><Data ss:Type="Number">4655.27</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">80004</Data></Cell>
+			<Cell><Data ss:Type="Number">4664.47</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">80005</Data></Cell>
+			<Cell><Data ss:Type="Number">3666.52</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">80006</Data></Cell>
+			<Cell><Data ss:Type="Number">0</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">80007</Data></Cell>
+			<Cell><Data ss:Type="Number">1514.36</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">80011</Data></Cell>
+			<Cell><Data ss:Type="Number">11601.68</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">80019</Data></Cell>
+			<Cell><Data ss:Type="Number">679.27</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">80021</Data></Cell>
+			<Cell><Data ss:Type="Number">4246.78</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">80022</Data></Cell>
+			<Cell><Data ss:Type="Number">11536.89</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">80024</Data></Cell>
+			<Cell><Data ss:Type="Number">76.92</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">80025</Data></Cell>
+			<Cell><Data ss:Type="Number">368.29</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">80026</Data></Cell>
+			<Cell><Data ss:Type="Number">29842.93</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">80027</Data></Cell>
+			<Cell><Data ss:Type="Number">34135.32</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">80028</Data></Cell>
+			<Cell><Data ss:Type="Number">0</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">80030</Data></Cell>
+			<Cell><Data ss:Type="Number">3802.06</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">80031</Data></Cell>
+			<Cell><Data ss:Type="Number">8129.54</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">80033</Data></Cell>
+			<Cell><Data ss:Type="Number">3188.77</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">80034</Data></Cell>
+			<Cell><Data ss:Type="Number">0</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">80035</Data></Cell>
+			<Cell><Data ss:Type="Number">0</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">80036</Data></Cell>
+			<Cell><Data ss:Type="Number">0</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">80037</Data></Cell>
+			<Cell><Data ss:Type="Number">0</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">80040</Data></Cell>
+			<Cell><Data ss:Type="Number">0</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">80042</Data></Cell>
+			<Cell><Data ss:Type="Number">0</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">80045</Data></Cell>
+			<Cell><Data ss:Type="Number">203.53</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">80102</Data></Cell>
+			<Cell><Data ss:Type="Number">1293.07</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">80123</Data></Cell>
+			<Cell><Data ss:Type="Number">5866.28</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">80127</Data></Cell>
+			<Cell><Data ss:Type="Number">5647.8</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">80128</Data></Cell>
+			<Cell><Data ss:Type="Number">4570.15</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">80136</Data></Cell>
+			<Cell><Data ss:Type="Number">1150.67</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">80137</Data></Cell>
+			<Cell><Data ss:Type="Number">379.59</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">80162</Data></Cell>
+			<Cell><Data ss:Type="Number">0</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">80214</Data></Cell>
+			<Cell><Data ss:Type="Number">3304.87</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">80215</Data></Cell>
+			<Cell><Data ss:Type="Number">2444.81</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">80221</Data></Cell>
+			<Cell><Data ss:Type="Number">9626.14</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">80225</Data></Cell>
+			<Cell><Data ss:Type="Number">0</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">80226</Data></Cell>
+			<Cell><Data ss:Type="Number">4110.15</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">80227</Data></Cell>
+			<Cell><Data ss:Type="Number">4537.53</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">80228</Data></Cell>
+			<Cell><Data ss:Type="Number">4295.13</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">80229</Data></Cell>
+			<Cell><Data ss:Type="Number">12579.5</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">80232</Data></Cell>
+			<Cell><Data ss:Type="Number">2839.96</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">80233</Data></Cell>
+			<Cell><Data ss:Type="Number">11556.58</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">80234</Data></Cell>
+			<Cell><Data ss:Type="Number">6468.55</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">80235</Data></Cell>
+			<Cell><Data ss:Type="Number">1100.83</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">80241</Data></Cell>
+			<Cell><Data ss:Type="Number">7653.79</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">80260</Data></Cell>
+			<Cell><Data ss:Type="Number">7907.23</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">80301</Data></Cell>
+			<Cell><Data ss:Type="Number">25921.86</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">80302</Data></Cell>
+			<Cell><Data ss:Type="Number">29371.71</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">80303</Data></Cell>
+			<Cell><Data ss:Type="Number">24853.3</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">80304</Data></Cell>
+			<Cell><Data ss:Type="Number">27282.02</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">80305</Data></Cell>
+			<Cell><Data ss:Type="Number">17659.96</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">80306</Data></Cell>
+			<Cell><Data ss:Type="Number">0</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">80307</Data></Cell>
+			<Cell><Data ss:Type="Number">0</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">80308</Data></Cell>
+			<Cell><Data ss:Type="Number">0</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">80309</Data></Cell>
+			<Cell><Data ss:Type="Number">0</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">80310</Data></Cell>
+			<Cell><Data ss:Type="Number">7356.8</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">80314</Data></Cell>
+			<Cell><Data ss:Type="Number">0</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">80321</Data></Cell>
+			<Cell><Data ss:Type="Number">0</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">80322</Data></Cell>
+			<Cell><Data ss:Type="Number">0</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">80323</Data></Cell>
+			<Cell><Data ss:Type="Number">0</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">80328</Data></Cell>
+			<Cell><Data ss:Type="Number">0</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">80329</Data></Cell>
+			<Cell><Data ss:Type="Number">0</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">80401</Data></Cell>
+			<Cell><Data ss:Type="Number">5310.08</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">80402</Data></Cell>
+			<Cell><Data ss:Type="Number">0</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">80403</Data></Cell>
+			<Cell><Data ss:Type="Number">2521.12</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">80419</Data></Cell>
+			<Cell><Data ss:Type="Number">0</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">80423</Data></Cell>
+			<Cell><Data ss:Type="Number">258.99</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">80425</Data></Cell>
+			<Cell><Data ss:Type="Number">22.54</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">80426</Data></Cell>
+			<Cell><Data ss:Type="Number">95.54</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">80433</Data></Cell>
+			<Cell><Data ss:Type="Number">1101.71</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">80437</Data></Cell>
+			<Cell><Data ss:Type="Number">0</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">80439</Data></Cell>
+			<Cell><Data ss:Type="Number">3108.68</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">80453</Data></Cell>
+			<Cell><Data ss:Type="Number">29.84</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">80454</Data></Cell>
+			<Cell><Data ss:Type="Number">169.62</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">80455</Data></Cell>
+			<Cell><Data ss:Type="Number">441.95</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">80457</Data></Cell>
+			<Cell><Data ss:Type="Number">46.84</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">80463</Data></Cell>
+			<Cell><Data ss:Type="Number">214.09</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">80465</Data></Cell>
+			<Cell><Data ss:Type="Number">2022.59</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">80466</Data></Cell>
+			<Cell><Data ss:Type="Number">3772.75</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">80470</Data></Cell>
+			<Cell><Data ss:Type="Number">401.19</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">80471</Data></Cell>
+			<Cell><Data ss:Type="Number">0</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">80481</Data></Cell>
+			<Cell><Data ss:Type="Number">541.85</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">80501</Data></Cell>
+			<Cell><Data ss:Type="Number">42329.62</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">80502</Data></Cell>
+			<Cell><Data ss:Type="Number">0</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">80503</Data></Cell>
+			<Cell><Data ss:Type="Number">35105</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">80504</Data></Cell>
+			<Cell><Data ss:Type="Number">55789.59</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">80510</Data></Cell>
+			<Cell><Data ss:Type="Number">325.92</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">80514</Data></Cell>
+			<Cell><Data ss:Type="Number">5450.59</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">80516</Data></Cell>
+			<Cell><Data ss:Type="Number">26560.57</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">80520</Data></Cell>
+			<Cell><Data ss:Type="Number">1566.61</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">80530</Data></Cell>
+			<Cell><Data ss:Type="Number">4605.84</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">80533</Data></Cell>
+			<Cell><Data ss:Type="Number">0</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">80534</Data></Cell>
+			<Cell><Data ss:Type="Number">17067.44</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">80540</Data></Cell>
+			<Cell><Data ss:Type="Number">4593.08</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">80542</Data></Cell>
+			<Cell><Data ss:Type="Number">4932.18</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">80543</Data></Cell>
+			<Cell><Data ss:Type="Number">7229.94</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">80544</Data></Cell>
+			<Cell><Data ss:Type="Number">120.07</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">80546</Data></Cell>
+			<Cell><Data ss:Type="Number">334.6</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">80550</Data></Cell>
+			<Cell><Data ss:Type="Number">29331.8</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">80551</Data></Cell>
+			<Cell><Data ss:Type="Number">0</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">80601</Data></Cell>
+			<Cell><Data ss:Type="Number">9115.59</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">80602</Data></Cell>
+			<Cell><Data ss:Type="Number">7980.26</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">80603</Data></Cell>
+			<Cell><Data ss:Type="Number">13945.59</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">80610</Data></Cell>
+			<Cell><Data ss:Type="Number">3337.69</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">80611</Data></Cell>
+			<Cell><Data ss:Type="Number">1191.74</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">80612</Data></Cell>
+			<Cell><Data ss:Type="Number">349.05</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">80614</Data></Cell>
+			<Cell><Data ss:Type="Number">0</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">80615</Data></Cell>
+			<Cell><Data ss:Type="Number">8243.02</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">80620</Data></Cell>
+			<Cell><Data ss:Type="Number">20041.62</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">80621</Data></Cell>
+			<Cell><Data ss:Type="Number">13148.34</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">80622</Data></Cell>
+			<Cell><Data ss:Type="Number">175.56</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">80623</Data></Cell>
+			<Cell><Data ss:Type="Number">982.1</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">80624</Data></Cell>
+			<Cell><Data ss:Type="Number">1218.59</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">80631</Data></Cell>
+			<Cell><Data ss:Type="Number">57683.56</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">80632</Data></Cell>
+			<Cell><Data ss:Type="Number">0</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">80633</Data></Cell>
+			<Cell><Data ss:Type="Number">0</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">80634</Data></Cell>
+			<Cell><Data ss:Type="Number">60111.44</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">80638</Data></Cell>
+			<Cell><Data ss:Type="Number">0</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">80639</Data></Cell>
+			<Cell><Data ss:Type="Number">0</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">80640</Data></Cell>
+			<Cell><Data ss:Type="Number">2945.12</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">80642</Data></Cell>
+			<Cell><Data ss:Type="Number">3967.64</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">80643</Data></Cell>
+			<Cell><Data ss:Type="Number">4313.59</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">80644</Data></Cell>
+			<Cell><Data ss:Type="Number">3311.87</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">80645</Data></Cell>
+			<Cell><Data ss:Type="Number">4611.01</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">80646</Data></Cell>
+			<Cell><Data ss:Type="Number">0</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">80648</Data></Cell>
+			<Cell><Data ss:Type="Number">1283.65</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">80649</Data></Cell>
+			<Cell><Data ss:Type="Number">2193.83</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">80650</Data></Cell>
+			<Cell><Data ss:Type="Number">1608.95</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">80651</Data></Cell>
+			<Cell><Data ss:Type="Number">4457.14</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">80652</Data></Cell>
+			<Cell><Data ss:Type="Number">340.79</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">80653</Data></Cell>
+			<Cell><Data ss:Type="Number">5018.23</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">80654</Data></Cell>
+			<Cell><Data ss:Type="Number">17386.45</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">80701</Data></Cell>
+			<Cell><Data ss:Type="Number">103819.53</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">80705</Data></Cell>
+			<Cell><Data ss:Type="Number">8171.04</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">80723</Data></Cell>
+			<Cell><Data ss:Type="Number">46136.17</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">80729</Data></Cell>
+			<Cell><Data ss:Type="Number">690.88</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">80732</Data></Cell>
+			<Cell><Data ss:Type="Number">0</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">80733</Data></Cell>
+			<Cell><Data ss:Type="Number">2955.76</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">80742</Data></Cell>
+			<Cell><Data ss:Type="Number">215.83</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">80750</Data></Cell>
+			<Cell><Data ss:Type="Number">1871.98</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">80754</Data></Cell>
+			<Cell><Data ss:Type="Number">182.79</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">81001</Data></Cell>
+			<Cell><Data ss:Type="Number">153895.12</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">81002</Data></Cell>
+			<Cell><Data ss:Type="Number">0</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">81003</Data></Cell>
+			<Cell><Data ss:Type="Number">74746.49</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">81004</Data></Cell>
+			<Cell><Data ss:Type="Number">130228.57</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">81005</Data></Cell>
+			<Cell><Data ss:Type="Number">160388.29</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">81006</Data></Cell>
+			<Cell><Data ss:Type="Number">58098.36</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">81007</Data></Cell>
+			<Cell><Data ss:Type="Number">159377.8</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">81008</Data></Cell>
+			<Cell><Data ss:Type="Number">54306.51</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">81009</Data></Cell>
+			<Cell><Data ss:Type="Number">0</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">81010</Data></Cell>
+			<Cell><Data ss:Type="Number">0</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">81011</Data></Cell>
+			<Cell><Data ss:Type="Number">0</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">81012</Data></Cell>
+			<Cell><Data ss:Type="Number">0</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">81019</Data></Cell>
+			<Cell><Data ss:Type="Number">8679.24</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">81022</Data></Cell>
+			<Cell><Data ss:Type="Number">8143.98</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">81023</Data></Cell>
+			<Cell><Data ss:Type="Number">5962.91</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">81025</Data></Cell>
+			<Cell><Data ss:Type="Number">3611.76</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">81069</Data></Cell>
+			<Cell><Data ss:Type="Number">10189.97</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">81212</Data></Cell>
+			<Cell><Data ss:Type="Number">632825.03</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">81215</Data></Cell>
+			<Cell><Data ss:Type="Number">0</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">81221</Data></Cell>
+			<Cell><Data ss:Type="Number">7122.19</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">81222</Data></Cell>
+			<Cell><Data ss:Type="Number">9468.81</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">81223</Data></Cell>
+			<Cell><Data ss:Type="Number">29620.9</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">81226</Data></Cell>
+			<Cell><Data ss:Type="Number">184415.3</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">81232</Data></Cell>
+			<Cell><Data ss:Type="Number">555.78</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">81233</Data></Cell>
+			<Cell><Data ss:Type="Number">17949.56</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">81240</Data></Cell>
+			<Cell><Data ss:Type="Number">74247.79</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">81244</Data></Cell>
+			<Cell><Data ss:Type="Number">7842.64</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">81290</Data></Cell>
+			<Cell><Data ss:Type="Number">0</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">81321</Data></Cell>
+			<Cell><Data ss:Type="Number">444.9364502</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">81323</Data></Cell>
+			<Cell><Data ss:Type="Number">133.1975361</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">81327</Data></Cell>
+			<Cell><Data ss:Type="Number">12.08968129</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">81328</Data></Cell>
+			<Cell><Data ss:Type="Number">141.6995064</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">81330</Data></Cell>
+			<Cell><Data ss:Type="Number">2.833990129</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">81331</Data></Cell>
+			<Cell><Data ss:Type="Number">9.647625971</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">81334</Data></Cell>
+			<Cell><Data ss:Type="Number">42.87163791</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">81335</Data></Cell>
+			<Cell><Data ss:Type="Number">0.723571948</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">81620</Data></Cell>
+			<Cell><Data ss:Type="Number">12479.63</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">81621</Data></Cell>
+			<Cell><Data ss:Type="Number">6824.55</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">81631</Data></Cell>
+			<Cell><Data ss:Type="Number">9681.44</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">81632</Data></Cell>
+			<Cell><Data ss:Type="Number">11523.11</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">81637</Data></Cell>
+			<Cell><Data ss:Type="Number">9846.04</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">81641</Data></Cell>
+			<Cell><Data ss:Type="Number">23899.87</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">81645</Data></Cell>
+			<Cell><Data ss:Type="Number">1282.26</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">81648</Data></Cell>
+			<Cell><Data ss:Type="Number">16861.13</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">81649</Data></Cell>
+			<Cell><Data ss:Type="Number">425.89</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">81655</Data></Cell>
+			<Cell><Data ss:Type="Number">120.86</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">81657</Data></Cell>
+			<Cell><Data ss:Type="Number">6733.61</Data></Cell>
+		</Row>
+		<Row>
+			<Cell><Data ss:Type="Number">81658</Data></Cell>
+			<Cell><Data ss:Type="Number">0</Data></Cell>
+		</Row>	</Table>
+</Worksheet>
+</Workbook>

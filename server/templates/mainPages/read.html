@@ -18,7 +18,7 @@
 <h2>Choose a Sector Table:</h2>
 <div id="row">
   <div class="col-sm-5 col-md-6">
-  <form action="/sectors/read" method="POST" name="readForm">
+  <form action="/emissions/read" method="POST" name="readForm">
     {{ form.csrf_token }}
     {% from 'helpers/_formHelpers.html' import render_field %}
     {{ render_field(form.tables, onchange="submitForm(readForm)") }}
@@ -26,7 +26,7 @@
 </div>
 <div class="col-sm-5 offset-sm-2 col-md-6 offset-md-0">
     {% if tableData %}
-    <form action="../../static/data/{{ tableName | safe }}.xls">
+    <form action="../../static/data/spreadsheets/{{ tableName }}.xls">
       <button type="submit" class="btn btn-primary">Download Data</button>
   </form>
   {% endif %}
@@ -54,5 +54,8 @@
     </table>
 </div>
 {% endif %}
+
+<script src="{{ url_for('static', filename='scripts/script.js') }}"></script>
+
 {% endblock %}
 

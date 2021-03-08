@@ -8,7 +8,7 @@ city_select.onchange = function(){changeZip();}
 
 function changeCity() {
     county = county_select.value;
-    fetch('/sectors/' + county).then(function(response){
+    fetch('/emissions/' + county).then(function(response){
         response.json().then(function(data){
             // console.table(data);
             let optionHTML = '';
@@ -25,7 +25,7 @@ function changeCity() {
 function changeZip() {
     county = county_select.value;
     city = city_select.value;
-    fetch(`/sectors/${county}/${city}`).then(function(response){
+    fetch(`/emissions/${county}/${city}`).then(function(response){
         response.json().then(function(data){
             // console.table(data);
             let optionHTML = '';

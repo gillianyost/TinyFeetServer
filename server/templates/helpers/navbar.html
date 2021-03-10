@@ -40,16 +40,16 @@
 
         <!-- ONE DIVISION IN THE DROPDOWN -->
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="/emissions">Emissions</a>
-          <!-- ANOTHER DIVISION IN THE DROPDOWN -->
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="/emissions/read">Read Tables</a>
-          <!-- ANOTHER DIVISION IN THE DROPDOWN -->
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="/emissions/select">Chart Data</a>
+          <a class="dropdown-item" href="/emissions">Emissions Overview</a>
           <!-- ANOTHER DIVISION IN THE DROPDOWN -->
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="/emissions/map">Map Data</a>
+          <!-- ANOTHER DIVISION IN THE DROPDOWN -->
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="/emissions/chart">Chart Data</a>
+          <!-- ANOTHER DIVISION IN THE DROPDOWN -->
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="/emissions/read">View Tables</a>
         </div>
         
       </li>
@@ -66,7 +66,7 @@
     </ul>
 
     <!-- CAN EVEN ADD A SEARCH FORM -->
-    <form action="{{ url_for('emissions.select') }}" method="POST" class="form-inline my-2 my-lg-0">
+    <form action="{{ url_for('emissions.chart') }}" method="POST" class="form-inline my-2 my-lg-0">
       <input
         class="form-control mr-sm-2"
         type="number"

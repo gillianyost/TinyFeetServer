@@ -1,13 +1,14 @@
 /* ------------- Dynamic Select page dropdown options switching ------------- */
 
-let county_select = document.getElementById('county');
-let city_select = document.getElementById('city');
-let zip_select = document.getElementById('zip');
-county_select.onchange = function(){changeCity();}
-city_select.onchange = function(){changeZip();}
+document.getElementById('countyField').onchange = function(){changeCity('countyField', 'cityField', 'zipField');}
+document.getElementById('cityField').onchange = function(){changeZip('countyField', 'cityField', 'zipField');}
 
-function changeCity() {
-    county = county_select.value;
+document.getElementById('countyField2').onchange = function(){changeCity('countyField2', 'cityField2', 'zipField2');}
+document.getElementById('cityField2').onchange = function(){changeZip('countyField2', 'cityField2', 'zipField2');}
+
+function changeCity(countyId, cityId, zipId) {
+    county = document.getElementById(countyId).value;
+    city = document.getElementById(cityId);
     fetch('/emissions/' + county).then(function(response){
         response.json().then(function(data){
             // console.table(data);
@@ -15,16 +16,18 @@ function changeCity() {
             for (let city of data.cities) {
                 optionHTML += '<option value="' + city.option + '">' + city.option + '</option>';
             }
-            city_select.innerHTML = optionHTML;
-            changeZip();    
+            city.innerHTML = optionHTML;
+            changeZip(countyId, cityId, zipId);    
         });
     });
 }
 
 
-function changeZip() {
-    county = county_select.value;
-    city = city_select.value;
+function changeZip(countyId, cityId, zipId) {
+    county = document.getElementById(countyId).value;
+    city = document.getElementById(cityId).value;
+    zip = document.getElementById(zipId);
+
     fetch(`/emissions/${county}/${city}`).then(function(response){
         response.json().then(function(data){
             // console.table(data);
@@ -33,7 +36,7 @@ function changeZip() {
             for (let zip of data.zip_codes) {
                 optionHTML += '<option value="' + zip.option + '">' + zip.option + '</option>';
             }
-            zip_select.innerHTML = optionHTML;
+            zip.innerHTML = optionHTML;
         });
     });
 }

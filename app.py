@@ -17,10 +17,15 @@ def emissions():
 
 # Recommendations route moved to survey folder to use survey blueprint
 
-# News
-@app.route('/news')
-def news():
-    return render_template('mainPages/news.html')
+# Recommendations
+@app.route('/resources')
+def resources():
+    return render_template('mainPages/resources.html')
+
+# Recommendations
+@app.route('/feedback')
+def feedback():
+    return render_template('mainPages/feedback.html')
 
 # Page Not Found
 @app.errorhandler(404)

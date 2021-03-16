@@ -2,3 +2,4 @@
 /server/registration
 /server/templates/helpers/register.html
 /server/templates/helpers/_formHelpers.html
+/venv

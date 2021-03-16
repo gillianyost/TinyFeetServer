@@ -93,8 +93,8 @@ class Zip_data(db.Model):
     aviation = db.Column(db.Integer)
 
 class Solutions(db.Model):
-    __tablename__ = 'solutions_page'
-    solutions_page_id = db.Column(db.Integer, primary_key=True)
+    __tablename__ = 'recommendations'
+    recommendations_id = db.Column(db.Integer, primary_key=True)
     section = db.Column(db.Text)
     subsection = db.Column(db.Text)
     solution_description = db.Column(db.Text)
@@ -104,6 +104,9 @@ class Solutions(db.Model):
     local_environmental_quality = db.Column(db.Integer)
     enhances_public_safety = db.Column(db.Integer)
     builds_resilience = db.Column(db.Integer)
+    vech_tran = db.Column(db.Integer)
+    energy = db.Column(db.Integer)
+    waste = db.Column(db.Integer)
 
 # ---------- Marshmallow schema class to serialize data --------- #
 class Zip_Data_Schema(ma.SQLAlchemyAutoSchema):

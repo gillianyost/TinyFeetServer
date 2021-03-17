@@ -415,5 +415,4 @@ function initMap() {
     } 
   }
   map.controls[google.maps.ControlPosition.LEFT_BOTTOM].push(legend);
-
 };

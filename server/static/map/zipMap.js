@@ -1,3 +1,7 @@
+var geoPath = '../static/map/coloradoZipGeo.json';
+var dataPath = '/emissions/getData';
+
+
 var map;
 var CO2ePerPop;
  
@@ -135,17 +139,14 @@ function initMap() {
 
   // Load GeoJSON that contains zip code boundaries and geographic information
   // NOTE: This uses cross-domain XHR, and may not work on older browsers.
-  map.data.loadGeoJson('../static/map/coloradoMapGeoZip.json')
+  map.data.loadGeoJson(geoPath)
 
   //  Import data file 
-  fetch("/emissions/getData")
+  fetch(dataPath)
     .then(response => {
       return response.json();
     })
     .then(function(ghgData){
-
-
-
 
   // Colorize zip code areas based on average CO2e emissions 
   map.data.setStyle(function(feature) {
@@ -292,7 +293,6 @@ function initMap() {
   }
   
 
-
     // Create content for info window
     var contentString = '<div id="content"><div id="siteNotice"></div>'+
       '<h2 id="firstHeading" class="firstHeading">Zip code: ' + zip + '</h2>'+
@@ -320,10 +320,7 @@ function initMap() {
       // '</br>Aviation: '+ `<b>${aviation}</b> Metric Tons CO2e/ Year` +
       // '</br>Cement and Manufacturing: '+ `<b>${cement_and_manufacturing}</b> Metric Tons CO2e/ Year` +'</p>'+
       // '</div>'+
-
-      `<div id="piechart" style=""></div>` +
-      '</div>';
-
+      '<div id="chart" style=""></div>';
 
 
     // Center info window on selected zip code area
@@ -352,45 +349,69 @@ function initMap() {
     infowindow.open(map, marker);
 
 
-/* ----------------------------- Draw pie chart ----------------------------- */
+/* ------------------------ Draw pie chart ---------------------------------------------- */
 
-    google.charts.load('current', {'packages':['corechart']});
+    google.charts.load('current', {'packages':['bar']});
     google.charts.setOnLoadCallback(drawChart);
 
     function drawChart() {
-      var data = google.visualization.arrayToDataTable([
-        ['Sector', 'Metric Tons CO2e/ Year'],
-        ['Transportation Cars Using Diesel', convertToNum(transportation_PV_diesel)],
-        ['Transportation Cars Using Gas', convertToNum(transportation_PV_gas)],
-        ['Transportation Trucks Using Diesel', convertToNum(transportation_trucks_diesel)],
-        ['Transportation Trucks Using Gas', convertToNum(transportation_trucks_gas)],
 
-        ['Electricity Commercial Sector', convertToNum(electricity_commercial)],
-        ['Electricity Industrial Sector', convertToNum(electricity_industrial)],
-        ['Electricity Residential Sector', convertToNum(electricity_residential)],
 
-        ['Natural Gas Commercial Sector', convertToNum(naturalGas_commercial)],
-        ['Natural Gas Industrial Sector', convertToNum(naturalGas_industrial)],
-        ['Natural Gas Residential Sector', convertToNum(naturalGas_residential)],
+      // var data = google.visualization.arrayToDataTable([
+      //   ['Sector', 'Metric Tons CO2e/ Year'],
+      //   ['Transportation Cars Using Diesel', convertToNum(transportation_PV_diesel)],
+      //   ['Transportation Cars Using Gas', convertToNum(transportation_PV_gas)],
+      //   ['Transportation Trucks Using Diesel', convertToNum(transportation_trucks_diesel)],
+      //   ['Transportation Trucks Using Gas', convertToNum(transportation_trucks_gas)],
 
-        ['Waste', convertToNum(waste)],
-        ['Aviation', convertToNum(aviation)],
-        ['Cement And Manufacturing', convertToNum(cement_and_manufacturing)]
-      ]);
+      //   ['Electricity Commercial Sector', convertToNum(electricity_commercial)],
+      //   ['Electricity Industrial Sector', convertToNum(electricity_industrial)],
+      //   ['Electricity Residential Sector', convertToNum(electricity_residential)],
+
+      //   ['Natural Gas Commercial Sector', convertToNum(naturalGas_commercial)],
+      //   ['Natural Gas Industrial Sector', convertToNum(naturalGas_industrial)],
+      //   ['Natural Gas Residential Sector', convertToNum(naturalGas_residential)],
+
+      //   ['Waste', convertToNum(waste)],
+      //   ['Aviation', convertToNum(aviation)],
+      //   ['Cement And Manufacturing', convertToNum(cement_and_manufacturing)]
+      // ]);
       
       // Pie chart options
+      // var options = {
+      //   title: 'Economic Sector CO2e Contributions (MT/Y)',
+      //   height: 400,
+      //   width: 500,
+      //   legend: { position: "bottom" },
+      //   // bar: { groupWidth: '75%' },
+      //   // isStacked: True
+      // };
+
+      var data = google.visualization.arrayToDataTable([
+        ['Genre', 'Fantasy & Sci Fi', 'Romance', 'Mystery/Crime', 'General',
+         'Western', 'Literature', { role: 'annotation' } ],
+        ['2010', 10, 24, 20, 32, 18, 5, ''],
+        ['2020', 16, 22, 23, 30, 16, 9, ''],
+        ['2030', 28, 19, 29, 30, 12, 13, '']
+      ]);
+
       var options = {
-        title: 'Economic Sector CO2e Contributions (MT/Y)',
-        height: 400,
-        width: 500,
-        legend: { position: "bottom" }
+        isStacked: 'percent',
+        height: 300,
+        legend: {position: 'top', maxLines: 3},
+        hAxis: {
+          minValue: 0,
+          ticks: [0, .3, .6, .9, 1]
+        }
       };
-      var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+      var chart = new google.charts.Bar(document.getElementById('chart'));
       chart.draw(data, options);
     }
     
   }
 });
+
 /* --------------------------------- LEGEND --------------------------------- */
 
   // Create a color bar legend for the colored zip code areas.

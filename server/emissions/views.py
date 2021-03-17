@@ -198,7 +198,6 @@ def chart():
             if (db.session.query(Zip_data).filter_by(zip=zip)).count() == 0:
                 flash("Please Enter a Valid Zip Code")
             else:
-                print("Hello")
                 return redirect(f'chart/zip/{zip}')
         return redirect(f'/emissions/chart')
     
@@ -235,7 +234,7 @@ def chartZip(zip, zip2=None):
     
     # Table 1
     for row in query:
-        data = (object_as_dict(row))
+        data = object_as_dict(row)
 
     # Remove zip and pop non-numerical data points
     data.pop('population2018')

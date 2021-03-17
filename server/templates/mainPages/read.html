@@ -28,8 +28,14 @@
     {% if tableData %}
     <form action="../../static/data/spreadsheets/{{ tableName }}.xls">
       <button type="submit" class="btn btn-primary">Download Data</button>
+  </form>  
+  {% else %}
+  <h2>Or Download all Data</h2>
+  <form action="../../static/data/spreadsheets/allGhgData.xls">
+    <button type="submit" class="btn btn-primary">Download All Data</button>
   </form>
   {% endif %}
+
 </div>
 
 </div>

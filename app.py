@@ -15,9 +15,7 @@ def index():
 def emissions():
     return render_template('mainPages/emissions.html')
 
-# Recommendations route moved to survey folder to use survey blueprint
-
-# Recommendations
+# Resources
 @app.route('/resources')
 def resources():
     return render_template('mainPages/resources.html')

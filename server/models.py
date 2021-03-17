@@ -99,11 +99,13 @@ class Solutions(db.Model):
     subsection = db.Column(db.Text)
     solution_description = db.Column(db.Text)
     ghg_reduction_potential = db.Column(db.Integer)
+    
     equity = db.Column(db.Integer)
     economic_sustainability = db.Column(db.Integer)
     local_environmental_quality = db.Column(db.Integer)
     enhances_public_safety = db.Column(db.Integer)
     builds_resilience = db.Column(db.Integer)
+
     vech_tran = db.Column(db.Integer)
     energy = db.Column(db.Integer)
     waste = db.Column(db.Integer)

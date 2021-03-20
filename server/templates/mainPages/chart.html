@@ -103,6 +103,7 @@
     {% endif %}
     {% if compare %}
     <h1>Chart Data And Compare Two Areas</h1>
+    <br>
     <form action="/emissions/chart" method="POST">
       <div class="row">
           {{ form.singleSubmit }}
@@ -133,7 +134,7 @@
 </div>
 {% endif %}
 
-{% if compare %}
+{% if chartData1 %}
 <div class="container">
   <br>
   <h3>All Sector GHG Data Chart</h3>

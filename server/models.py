@@ -92,6 +92,25 @@ class Zip_data(db.Model):
     transportation_trucks_diesel = db.Column(db.Integer)
     aviation = db.Column(db.Integer)
 
+class County_data(db.Model):
+    __tablename__ = 'v_sectorAllTotalGHG_county'
+    city = db.Column(db.Text, primary_key=True)
+    county = db.Column(db.Text)
+    population2018 = db.Column(db.Integer)
+    cement_and_manufacturing = db.Column(db.Integer)
+    waste = db.Column(db.Integer)
+    electricity_commercial = db.Column(db.Integer)
+    electricity_industrial = db.Column(db.Integer)
+    electricity_residential = db.Column(db.Integer)
+    naturalGas_commercial = db.Column(db.Integer)
+    naturalGas_industrial = db.Column(db.Integer)
+    naturalGas_residential = db.Column(db.Integer)
+    transportation_PV_gas = db.Column(db.Integer)
+    transportation_PV_diesel = db.Column(db.Integer)
+    transportation_trucks_gas = db.Column(db.Integer)
+    transportation_trucks_diesel = db.Column(db.Integer)
+    aviation = db.Column(db.Integer)
+
 class Solutions(db.Model):
     __tablename__ = 'recommendations'
     recommendations_id = db.Column(db.Integer, primary_key=True)
@@ -114,4 +133,9 @@ class Solutions(db.Model):
 class Zip_Data_Schema(ma.SQLAlchemyAutoSchema):
     class Meta:
         model=Zip_data
+        load_instance=True
+
+class County_Data_Schema(ma.SQLAlchemyAutoSchema):
+    class Meta:
+        model=County_data
         load_instance=True

@@ -2,7 +2,7 @@ from flask import Blueprint,render_template,redirect,url_for,request, jsonify, f
 from server import db
 from sqlalchemy import distinct, inspect
 from server.emissions.forms import CityCountyZipDropDown, tableSelectForm
-from server.models import Cement_and_manufacturing, Electricity, Natural_gas, Otis_transportation, Waste, Aviation, Zip_pop, Zip_data, Zip_Data_Schema
+from server.models import Cement_and_manufacturing, Electricity, Natural_gas, Otis_transportation, Waste, Aviation, Zip_pop, Zip_data, Zip_Data_Schema, County_data, County_Data_Schema
 # from server.models import *
 import collections
 from flask_marshmallow import Marshmallow
@@ -98,10 +98,17 @@ def googleMap():
     return render_template('mainPages/map.html')
 
 
-@emissions_blueprint.route('/getData')
-def getData():
+@emissions_blueprint.route('/getZipData')
+def getZipData():
     ghgData = Zip_data.query.all()
     output = Zip_Data_Schema(many=True).dump(ghgData)
+    return jsonify(output)
+
+
+@emissions_blueprint.route('/getCountyData')
+def getCountyData():
+    ghgData = County_data.query.all()
+    output = County_Data_Schema(many=True).dump(ghgData)
     return jsonify(output)
 
 

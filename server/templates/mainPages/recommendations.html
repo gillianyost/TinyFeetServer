@@ -44,42 +44,46 @@
 
   <div class="row">
     <div class="col-sm-5 col-md-6">
-      <h3>Filter by Holistic Community Metric</h3>
-      <p>I want to see solutions that support: </p>
-    </div>
-    <div class="col-sm-5 offset-sm-2 col-md-6 offset-md-0">
       <h3>Filter by Emissions Sector</h3>
       <p>I want to see solutions that reduce emissions from: </p>
     </div>
+    <div class="col-sm-5 offset-sm-2 col-md-6 offset-md-0">
+      <h3>Filter by Community Co-benefit</h3>
+      <p>I want to see solutions that support: </p>
+    </div>
+
   </div>
   <form action="/recommendations" method="POST">
     <div class="row">
-      <div class="col-sm-5 col-md-6">{{ form.allSol.label }}{{ form.allSol }}</div>
-      <div class="col-sm-5 offset-sm-2 col-md-6 offset-md-0">{{ form.allSec.label }}{{ form.allSec }}</div>
+      <div class="col-sm-5 col-md-6">{{ form.allSec.label }}{{ form.allSec }}</div>
+      <div class="col-sm-5 offset-sm-2 col-md-6 offset-md-0">{{ form.allSol.label }}{{ form.allSol }}</div>
     </div>
     <div class="row">
-      <div class="col-sm-5 col-md-6">{{ form.equity.label }}{{ form.equity }}</div>
-      <div class="col-sm-5 offset-sm-2 col-md-6 offset-md-0">{{ form.transportation.label }}{{ form.transportation }}
-      </div>
+      <div class="col-sm-5 col-md-6">{{ form.transportation.label }}{{ form.transportation }}</div>
+      <div class="col-sm-5 offset-sm-2 col-md-6 offset-md-0">{{ form.equity.label }}{{ form.equity }}</div>
     </div>
     <div class="row">
-      <div class="col-sm-5 col-md-6">{{ form.econSus.label }}{{ form.econSus }}</div>
-      <div class="col-sm-5 offset-sm-2 col-md-6 offset-md-0">{{ form.energy.label }}{{ form.energy }}</div>
+      <div class="col-sm-5 col-md-6">{{ form.energy.label }}{{ form.energy }}</div>
+      <div class="col-sm-5 offset-sm-2 col-md-6 offset-md-0">{{ form.econSus.label }}{{ form.econSus }}</div>
     </div>
     <div class="row">
-      <div class="col-sm-5 col-md-6">{{ form.envQuality.label }}{{ form.envQuality }}</div>
-      <div class="col-sm-5 offset-sm-2 col-md-6 offset-md-0">{{ form.waste.label }}{{ form.waste }}</div>
+      <div class="col-sm-5 col-md-6">{{ form.waste.label }}{{ form.waste }}</div>
+      <div class="col-sm-5 offset-sm-2 col-md-6 offset-md-0">{{ form.envQuality.label }}{{ form.envQuality }}</div>
     </div>
     <div class="row">
-      <div class="col-sm-5 col-md-6">{{ form.healthSafety.label }}{{ form.healthSafety }}</div>
+      <div class="col-sm-5 col-md-6"></div>
+      <div class="col-sm-5 offset-sm-2 col-md-6 offset-md-0">{{ form.healthSafety.label }}{{ form.healthSafety }}</div>
     </div>
     <div class="row">
-      <div class="col-sm-5 col-md-6">{{ form.resilience.label }}{{ form.resilience }}</div>
+      <div class="col-sm-5 col-md-6"></div>
+      <div class="col-sm-5 offset-sm-2 col-md-6 offset-md-0">{{ form.resilience.label }}{{ form.resilience }}</div>
     </div>
     <div class="row">
       <div class="col-sm-5 col-md-6">{{ form.submit }}</div>
     </div>
   </form>
+  <br>
+  <br>
 
   {% if tableData %}
   <br>

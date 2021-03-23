@@ -15,23 +15,30 @@
     border: 3px solid #000;
     border-collapse: collapse;
   }
+
   #legend h3 {
     margin-top: 0;
   }
+
+  #infoWindow{
+    height:390px;
+  }
+  .infoWindowText{
+    font-size: 120%;
+    text-align: center;
+  }
+  #infoWindowHeader{
+    font-size: 150%;
+  }
+
   .cbox {
     font-size: 150%;
     font-weight: bold;
-    color: #ffe680;
+    color: #ededed;
     text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
   }
-  /* Optional: Makes the sample page fill the window. */
-  html, body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-  }
+
 </style>
-<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
 <div class="container">
   <h1>Emissions Data Visualized on Google Map</h1>
@@ -43,9 +50,10 @@
 
 
 </div>
-
-<!-- <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script> -->
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<!-- <script src="{{ url_for('static', filename='map/countyMap.js') }}"></script> -->
 <script src="{{ url_for('static', filename='map/zipMap.js') }}"></script>
+
 <script async defer
 src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCVO9N4Qdj5bxyyVo6B9QqGFfJxfOTHr3w&callback=initMap">
 </script>

@@ -1,5 +1,5 @@
 var geoPath = '../static/map/coloradoZipGeo.json';
-var dataPath = '/emissions/getData';
+var dataPath = '/emissions/getZipData';
 
 
 var map;
@@ -258,18 +258,21 @@ function initMap() {
         cement_and_manufacturing = ghgData[item].cement_and_manufacturing;
         aviation = ghgData[item].aviation;
 
-      // var transportationTotal = transportation_PV_diesel+
-      //   transportation_PV_gas+
-      //   transportation_trucks_diesel+
-      //   transportation_trucks_gas;
+      var transportationTotal = transportation_PV_diesel+
+        transportation_PV_gas+
+        transportation_trucks_diesel+
+        transportation_trucks_gas+
+        aviation;
   
-      // var electricityTotal = electricity_commercial+
-      //   electricity_industrial+
-      //   electricity_residential;
+      var energyTotal = electricity_commercial+
+        electricity_industrial+
+        electricity_residential+
+        naturalGas_commercial+
+        naturalGas_industrial+
+        naturalGas_residential;
   
-      // var naturalGasTotal = naturalGas_commercial+
-      //   naturalGas_industrial+
-      //   naturalGas_residential;
+      var wasteTotal = waste+
+        cement_and_manufacturing;
     
 
         // CO2ePerPop = (
@@ -294,13 +297,13 @@ function initMap() {
   
 
     // Create content for info window
-    var contentString = '<div id="content"><div id="siteNotice"></div>'+
-      '<h2 id="firstHeading" class="firstHeading">Zip code: ' + zip + '</h2>'+
-      '<h3>City: ' + city + '</h3>'+
-      '<h3>County: ' + county + '</h3>'+
-      '<h3>Population: ' + population2018 + '</h3>'+
+    var contentString = '<div id="infoWindow"><div id="siteNotice"></div>'+
+      '<h2 id="infoWindowHeader" class="infoWindowText">Zip code: ' + zip + '</h2>'+
+      '<h3 class="infoWindowText">City: ' + city + '</h3>'+
+      '<h3 class="infoWindowText">County: ' + county + '</h3>'+
+      '<h3 class="infoWindowText">Population: ' + population2018 + '</h3>'+
 
-      '<h3>Average CO2e Per Person: ' + CO2ePerPop.toFixed(2) + '</h3>'+
+      '<h3 class="infoWindowText">Average CO2e Per Person: ' + CO2ePerPop.toFixed(2) + '</h3>'+
 
       // '<div id="bodyContent" style="font-size: 12pt;" >'+
       // '</br>Transportation Cars Using Diesel: ' + `<b>${transportation_PV_diesel}</b> Metric Tons CO2e/ Year` +
@@ -320,7 +323,8 @@ function initMap() {
       // '</br>Aviation: '+ `<b>${aviation}</b> Metric Tons CO2e/ Year` +
       // '</br>Cement and Manufacturing: '+ `<b>${cement_and_manufacturing}</b> Metric Tons CO2e/ Year` +'</p>'+
       // '</div>'+
-      '<div id="chart" style=""></div>';
+      '<div id="chart" style=""></div>'
+      +'</div>';
 
 
     // Center info window on selected zip code area
@@ -344,6 +348,7 @@ function initMap() {
       map: map,
       visible : false
     });
+
     // Create info window
     infowindow.setContent(contentString);
     infowindow.open(map, marker);
@@ -351,61 +356,31 @@ function initMap() {
 
 /* ------------------------ Draw pie chart ---------------------------------------------- */
 
-    google.charts.load('current', {'packages':['bar']});
+    google.charts.load('current', {'packages':['corechart']});
     google.charts.setOnLoadCallback(drawChart);
 
     function drawChart() {
 
-
-      // var data = google.visualization.arrayToDataTable([
-      //   ['Sector', 'Metric Tons CO2e/ Year'],
-      //   ['Transportation Cars Using Diesel', convertToNum(transportation_PV_diesel)],
-      //   ['Transportation Cars Using Gas', convertToNum(transportation_PV_gas)],
-      //   ['Transportation Trucks Using Diesel', convertToNum(transportation_trucks_diesel)],
-      //   ['Transportation Trucks Using Gas', convertToNum(transportation_trucks_gas)],
-
-      //   ['Electricity Commercial Sector', convertToNum(electricity_commercial)],
-      //   ['Electricity Industrial Sector', convertToNum(electricity_industrial)],
-      //   ['Electricity Residential Sector', convertToNum(electricity_residential)],
-
-      //   ['Natural Gas Commercial Sector', convertToNum(naturalGas_commercial)],
-      //   ['Natural Gas Industrial Sector', convertToNum(naturalGas_industrial)],
-      //   ['Natural Gas Residential Sector', convertToNum(naturalGas_residential)],
-
-      //   ['Waste', convertToNum(waste)],
-      //   ['Aviation', convertToNum(aviation)],
-      //   ['Cement And Manufacturing', convertToNum(cement_and_manufacturing)]
-      // ]);
+      var data = google.visualization.arrayToDataTable([
+        ['Sector', 'Metric Tons CO2e/ Year'],
+        ['Transportation', convertToNum(transportationTotal)],
+        ['Energy', convertToNum(energyTotal)],
+        ['Waste', convertToNum(wasteTotal)]
+      ]);
       
       // Pie chart options
-      // var options = {
-      //   title: 'Economic Sector CO2e Contributions (MT/Y)',
-      //   height: 400,
-      //   width: 500,
-      //   legend: { position: "bottom" },
-      //   // bar: { groupWidth: '75%' },
-      //   // isStacked: True
-      // };
-
-      var data = google.visualization.arrayToDataTable([
-        ['Genre', 'Fantasy & Sci Fi', 'Romance', 'Mystery/Crime', 'General',
-         'Western', 'Literature', { role: 'annotation' } ],
-        ['2010', 10, 24, 20, 32, 18, 5, ''],
-        ['2020', 16, 22, 23, 30, 16, 9, ''],
-        ['2030', 28, 19, 29, 30, 12, 13, '']
-      ]);
-
       var options = {
-        isStacked: 'percent',
-        height: 300,
-        legend: {position: 'top', maxLines: 3},
-        hAxis: {
-          minValue: 0,
-          ticks: [0, .3, .6, .9, 1]
-        }
+        title: 'Economic Sector CO2e Contributions (MT/Y)',
+        height: 250,
+        width: 350,
+        legend: { position: "bottom" },
+        // bar: { groupWidth: '75%' },
+        // isStacked: True
       };
 
-      var chart = new google.charts.Bar(document.getElementById('chart'));
+ 
+
+      var chart = new google.visualization.PieChart(document.getElementById('chart'));
       chart.draw(data, options);
     }
     
